@@ -1,0 +1,9 @@
+I N S Vikrant. A research crew you run from a phone call. Every claim is checked against its source before anyone argues about it.
+You call a number and ask a question about a company. A voice agent turns it into a mission. Three scouts collect claims. An evidence checker re-fetches every source. Bull and Bear argue from what survives, the captain rules, and a notification lands on your phone.
+This is a real call. The voice agent starts the mission through our bridge and reads back the mission I D the bridge returned. It is told never to invent one.
+Every step is recorded. The Fundamentals scout gets its own Boat virtual machine, created for the mission and stopped afterwards, so its disk is kept as evidence. The machine holds no keys.
+The checker is plain code, not a model, so a scraped page cannot talk its way past it. We attached ten fake quotes to real pages. It rejected ten of ten, and passed nine of nine real ones.
+Each step writes its result before the next one starts. Kill a scout in the middle of a mission, and the captain relaunches only that scout. The mission still reaches a verdict.
+Ask why, and you hear both sides. Claude only sees claims that passed the checker. It labels each one for or against the thesis and explains the reasons. The counts and the verdict are still computed in code.
+The verdict arrives as a phone notification. The bridge keeps a timeline of every mission, and each memo lists the reasons, their sources, and anything the checker dropped.
+Measured today: ten of ten planted fakes caught, forty-seven tests passing, and every mission survived a killed scout. Research only, with no buy or sell advice. The code and the evidence are on GitHub.

@@ -4,6 +4,10 @@ Evidence-checked research missions. Ask a question about a company; three scouts
 
 Built for the Boat Hackathon (Nov 2026). Research only: no buy or sell language and no brokerage connection.
 
+## Demo video
+
+[`demo/ins-vikrant-demo.mp4`](demo/ins-vikrant-demo.mp4) is a 100-second narrated walkthrough built from real output: a call transcript, a mission's recorded steps, the planted-fakes run and the timeline page. `demo/build.sh` rebuilds it.
+
 ## What the caller sees
 
 ![Caller's view of a mission](docs/user-flow.png)

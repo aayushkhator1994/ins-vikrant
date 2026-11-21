@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>The checker is plain code, not a model</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0b1220;color:#e6edf7;
+ font-family:-apple-system,"SF Pro Display",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.slide{position:absolute;inset:0;padding:72px 110px 96px 110px;display:flex;flex-direction:column}
+h1{font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.12;color:#fff}
+h1 .a,.a{color:#4fd1c5}
+.sub{font-size:38px;line-height:1.3;color:#c3cee0;margin-top:20px}
+.body{font-size:40px;line-height:1.35}
+.cap{font-size:28px;color:#8fa0bb;margin-top:26px;line-height:1.35}
+.term{font-family:"SF Mono",Menlo,monospace;font-size:28px;line-height:1.75;background:#060b16;
+ border:1px solid #1f2b44;border-radius:18px;padding:30px 34px;white-space:pre;color:#cfd9ea;margin-top:40px}
+.term .dim{color:#6f809c}.term .red{color:#f87171}.term .acc{color:#4fd1c5}
+.footer{position:absolute;left:110px;bottom:34px;font-size:22px;color:#6f809c;letter-spacing:.3px}
+.bar{width:120px;height:8px;border-radius:4px;background:#4fd1c5;margin-bottom:34px}
+
+ul{list-style:none;margin-top:44px}
+li{position:relative;padding-left:52px;margin-bottom:20px}
+li:before{content:"";position:absolute;left:6px;top:20px;width:18px;height:18px;border-radius:50%;background:#4fd1c5}
+.term{font-size:30px;margin-top:34px}
+</style></head>
+<body><div class="slide">
+
+<h1>The checker is plain code, <span class="a">not a model</span></h1>
+<ul class="body">
+<li>Re-fetches every cited source (through Context.dev when a key is set)</li>
+<li>The quote must be on the page</li>
+<li>Every number in the claim must be in the quote</li>
+</ul>
+<div class="term"><span class="dim">$</span> npm run fakes
+<span class="acc">Planted fakes caught: 10 of 10</span>
+<span class="acc">Controls passed: 9 of 9</span></div>
+<div class="cap">10 fake quotes attached to real pages: 5 invented, 5 real sentences with one number changed.</div>
+</div>
+<div class="footer">INS Vikrant · github.com/aayushkhator1994/ins-vikrant</div>
+</body></html>
