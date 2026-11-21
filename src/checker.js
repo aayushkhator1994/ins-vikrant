@@ -57,7 +57,22 @@ export function extractNumbers(s) {
   return matches.map((m) => String(Number(m.replace(/,/g, ''))));
 }
 
-export async function fetchSource(url) {
+export function markdownToText(md) {
+  return String(md ?? '')
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/^[ \t]*\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)*\|?[ \t]*$/gm, ' ')
+    .replace(/^[ \t]*#{1,6}[ \t]+/gm, '')
+    .replace(/^[ \t]*(?:>[ \t]?)+/gm, '')
+    .replace(/^[ \t]*(?:[-+*]|\d+\.)[ \t]+/gm, '')
+    .replace(/~~/g, '')
+    .replace(/[*`]/g, '')
+    .replace(/\|/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+async function fetchDirect(url) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
@@ -70,11 +85,52 @@ export async function fetchSource(url) {
       },
     });
     const body = await res.text();
-    return { ok: res.ok, status: res.status, text: htmlToText(body) };
+    return { ok: res.ok, status: res.status, text: htmlToText(body), via: 'direct' };
   } catch {
-    return { ok: false, status: 0, text: '' };
+    return { ok: false, status: 0, text: '', via: 'direct' };
   } finally {
     clearTimeout(timer);
+  }
+}
+
+const CONTEXT_DEV_URL = 'https://api.context.dev/v1/web/scrape';
+const CONTEXT_DEV_TIMEOUT_MS = 30000;
+const FEED_OR_API_RE = /\/rss|\.xml(\?|$)|\.json(\?|$)|news\.google\.com/i;
+
+async function fetchContextDev(url, key) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), CONTEXT_DEV_TIMEOUT_MS);
+  try {
+    const res = await fetch(CONTEXT_DEV_URL, {
+      method: 'POST',
+      signal: controller.signal,
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, formats: { markdown: true } }),
+    });
+    if (!res.ok) return null;
+    const json = await res.json();
+    const md = json?.markdown?.data;
+    if (typeof md !== 'string') return null;
+    const text = markdownToText(md);
+    if (!text) return null;
+    return { ok: true, status: 200, text, via: 'context.dev' };
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+export async function fetchSource(url) {
+  try {
+    const key = process.env.CONTEXT_DEV_API_KEY;
+    if (key && !FEED_OR_API_RE.test(String(url))) {
+      const scraped = await fetchContextDev(url, key);
+      if (scraped) return scraped;
+    }
+    return await fetchDirect(url);
+  } catch {
+    return { ok: false, status: 0, text: '', via: 'direct' };
   }
 }
 
@@ -88,8 +144,15 @@ function isHttpUrl(u) {
   }
 }
 
+const directCache = new Map();
+function directOnce(url) {
+  if (!directCache.has(url)) directCache.set(url, fetchDirect(url).catch(() => null));
+  return directCache.get(url);
+}
+
 export async function checkClaim(claim, { fetchSource: fetcher = fetchSource } = {}) {
-  const done = (check) => ({ ...claim, check });
+  let via;
+  const done = (check) => (via ? { ...claim, check, fetched_via: via } : { ...claim, check });
   const url = claim?.source_url;
   if (!isHttpUrl(url)) return done('source_unreachable');
 
@@ -99,11 +162,16 @@ export async function checkClaim(claim, { fetchSource: fetcher = fetchSource } =
   } catch {
     return done('source_unreachable');
   }
+  if (page && typeof page.via === 'string' && page.via) via = page.via;
   if (!page || !page.ok) return done('source_unreachable');
 
   const quote = normalize(claim.quote);
   if (quote.length < MIN_QUOTE_LEN) return done('quote_not_found');
-  if (!normalize(page.text).includes(quote)) return done('quote_not_found');
+  if (!normalize(page.text).includes(quote)) {
+    const raw = via === 'context.dev' ? await directOnce(url) : null;
+    if (!raw || !raw.ok || !normalize(raw.text).includes(quote)) return done('quote_not_found');
+    via = 'direct';
+  }
 
   const quoteNumbers = new Set(extractNumbers(claim.quote));
   for (const n of extractNumbers(claim.claim)) {

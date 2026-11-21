@@ -5,16 +5,15 @@ Phone [icon: phone, color: blue, label: "Call the INS Vikrant number"]
 Voice [icon: mic, color: purple, label: "Voice agent restates the question and names the mission"]
 Crew [color: orange] {
   Captain [icon: anchor, label: "Captain launches the crew"]
-  Fundamentals [icon: file-text, label: "Fundamentals scout reads the earnings release"]
+  Fundamentals [icon: file-text, label: "Fundamentals scout reads the earnings release on its own Boat VM"]
   News [icon: rss, label: "News scout reads 30 days of headlines"]
   Readacross [icon: share-2, label: "Read-across scout checks suppliers and rivals"]
-  Checker [icon: shield, color: red, label: "Evidence checker re-fetches every source and drops unproven claims"]
+  Checker [icon: shield, color: red, label: "Evidence checker re-fetches every source through Context.dev and drops unproven claims"]
   Debate [icon: message-circle, label: "Bull and Bear argue, then rebut each other"]
   Verdict [icon: check-circle, color: green, label: "Captain rules: Supports, Mixed or Contradicts"]
 }
-Push [icon: bell, color: green, label: "Push on your phone with the verdict and claim counts"]
+Push [icon: bell, color: green, label: "Notification on your phone with the verdict and claim counts"]
 Memo [icon: file, color: green, label: "Tap for the memo and mission timeline"]
-CallBack [icon: phone-call, color: blue, label: "Call back: status, why, or stop"]
 You > Phone: ask a question out loud
 Phone > Voice
 Voice > Captain: mission brief
@@ -28,5 +27,3 @@ Checker > Debate: checked claims only
 Debate > Verdict
 Verdict > Push
 Push > Memo
-Memo > CallBack
-CallBack > Voice: answer is spoken back

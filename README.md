@@ -8,7 +8,7 @@ Built for the Boat Hackathon (Nov 2026). Research only: no buy or sell language 
 
 ![Caller's view of a mission](docs/user-flow.png)
 
-You call the number and ask a question out loud. The voice agent restates it and starts a mission. A push with the verdict and claim counts lands on your phone, and you can call back to ask for the status or the reasons.
+You call the number and ask a question out loud. The voice agent restates it and starts a mission. When the crew is done, a notification with the verdict and claim counts lands on your phone.
 
 ## What runs today
 
@@ -19,6 +19,8 @@ You call the number and ask a question out loud. The voice agent restates it and
 | Recorded steps | `src/store.js` | Every mission step writes its result before the next one starts, so a mission resumes instead of restarting. |
 | Debate and verdict | `src/debate.js` | Bull and Bear argue from checked claims only, each answers the other's strongest point, and the captain reports counts of claims for and against. There is no confidence score. |
 | Mission runner | `src/mission.js` | Runs the steps, relaunches a scout that dies, writes the memo and a per-ticker veto file, and sends an ntfy push. |
+| Boat VM | `src/boat.js` | With `BOAT_API_KEY` set, the Fundamentals scout runs on its own boat.dev VM: created for the mission, given the brief, and stopped afterwards so its disk is kept as evidence. The VM holds no keys. |
+| Context.dev | `src/checker.js` | With `CONTEXT_DEV_API_KEY` set, pages are fetched through Context.dev's scrape API. A quote is rejected only if it is also missing from the raw page. |
 | Bridge | `src/bridge.js` | Tool endpoint for a Vapi voice assistant (`start_mission`, `get_status`, `why`, `stop_mission`) and a read-only timeline page. |
 
 ## Run it
@@ -62,11 +64,13 @@ Measured on Nov 20, 2026. Nothing here is estimated.
 | Planted fakes caught | 10 of 10 | `npm run fakes`: 5 invented quotes and 5 real sentences with one number changed, each attached to a real URL |
 | Real quotes passed (controls) | 8 of 8 | Same run: real sentences from 4 live pages. A fifth page (sec.gov) was unreachable and skipped |
 | Missions that survive a lost scout | 2 of 2 | `--kill-scout news`: the scout process is killed mid-mission, relaunched, and the mission reaches a verdict |
-| Claims rejected in live missions | 0 of 28 | Two NVDA missions. The scouts quote pages verbatim, so the checker had nothing to reject; the planted-fakes run is the test of the checker |
-| Mission time | about 1.5 s | One NVDA mission, three scouts, 16 claims checked |
+| Claims rejected in live missions | 0 of 28 | The first two NVDA missions. The scouts quote pages verbatim, so the checker had nothing to reject; the planted-fakes run is the test of the checker |
+| Mission time | about 1.5 s local, about 5 s with a Boat VM | One NVDA mission, three scouts, 16 claims checked |
+| Scout run on a Boat VM | 2 of 2 missions | The Fundamentals VM was created, returned 4 claims and was stopped in about 3 s each time |
+| Claims re-fetched through Context.dev | 3 of 16 | Mission `nvda-boat-2`: 3 of the 4 Fundamentals claims. The fourth matched only the raw page, and headline feeds are fetched directly |
 | Unit tests | 30 of 30 pass | `npm test` |
 
-A full recorded mission is in [`examples/nvda-capex/`](examples/nvda-capex/): start with [`memo.md`](examples/nvda-capex/memo.md) and `events.jsonl`. Raw planted-fakes output is in `scripts/planted-fakes.result.json`.
+Recorded missions: [`examples/nvda-boat-2/`](examples/nvda-boat-2/) ran with a Boat VM and Context.dev, and [`examples/nvda-capex/`](examples/nvda-capex/) ran locally with a scout killed mid-run. Start with `memo.md` and `events.jsonl`. Raw planted-fakes output is in `scripts/planted-fakes.result.json`.
 
 ## Guards
 
@@ -81,8 +85,9 @@ A full recorded mission is in [`examples/nvda-capex/`](examples/nvda-capex/): st
 
 ## Not built yet
 
-- **Boat VMs.** Scouts run as separate local processes, which stand in for per-mission VMs. Killing a process stands in for deleting a VM.
-- **Context.dev and Band.** Scouts and the checker fetch pages directly, and handoffs are function calls recorded in `events.jsonl`, not messages in a Band room.
+- **Every scout on Boat.** Only the Fundamentals scout runs on a Boat VM; News and Read-across run as local processes, and the bridge runs on a laptop. The kill test kills a local process, not a VM.
+- **Band, and the rest of Context.dev.** Handoffs are function calls recorded in `events.jsonl`, not messages in a Band room. Only Context.dev's scrape API is used; headlines come from Google News RSS, and there are no monitors.
+- **New York Token Exchange.** `src/llm.js` can write a captain's briefing through it from checked claims, but it has not been run with a key.
 - **Always-on bridge.** The phone number works while the bridge runs on a laptop behind an ngrok tunnel; it is not hosted on a Boat VM. The tool calls were verified through the public URL with simulated Vapi requests.
 - **Model-written arguments.** Scouts, Bull, Bear and the captain are deterministic code. Sides are assigned by keyword counting, which is crude, so there is no model comparison and no replay-accuracy score.
 - **Prompt-injection measurement.** Covered by a unit test of the checker only, not by planted pages fed to live scouts.

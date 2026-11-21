@@ -6,6 +6,8 @@ import {
   extractNumbers,
   checkClaim,
   checkClaims,
+  markdownToText,
+  fetchSource,
 } from '../src/checker.js';
 
 const URL_A = 'https://example.com/a';
@@ -167,4 +169,80 @@ test('checkClaims: empty input', async () => {
     dropped: [],
     stats: { total: 0, passed: 0, rejected: 0, rejected_share: 0 },
   });
+});
+
+test('markdownToText: link, image, heading, bold, table row', () => {
+  assert.equal(markdownToText('See [the filing](https://example.com/10q) now'), 'See the filing now');
+  assert.equal(markdownToText('![Revenue chart](https://example.com/c.png)'), 'Revenue chart');
+  assert.equal(markdownToText('## Quarterly results'), 'Quarterly results');
+  assert.equal(markdownToText('Revenue was **$35,082 million** and `up`'), 'Revenue was $35,082 million and up');
+  assert.equal(
+    markdownToText('| Metric | Value |\n|---|---|\n| Gross margin | 57.0% |'),
+    'Metric Value Gross margin 57.0%',
+  );
+  assert.equal(markdownToText('> quoted ~~old~~ text with snake_case'), 'quoted old text with snake_case');
+  assert.equal(markdownToText(undefined), '');
+});
+
+test('checkClaim: copies via from the fetch result as fetched_via', async () => {
+  const f = async () => ({ ok: true, status: 200, text: PAGE_A, via: 'context.dev' });
+  const r = await checkClaim(claim(), { fetchSource: f });
+  assert.equal(r.check, 'passed');
+  assert.equal(r.fetched_via, 'context.dev');
+  const plain = await checkClaim(claim(), { fetchSource: fakeFetcher({ [URL_A]: PAGE_A }) });
+  assert.ok(!('fetched_via' in plain));
+});
+
+test('fetchSource: uses Context.dev when CONTEXT_DEV_API_KEY is set', async () => {
+  const realFetch = globalThis.fetch;
+  const prevKey = process.env.CONTEXT_DEV_API_KEY;
+  const calls = [];
+  process.env.CONTEXT_DEV_API_KEY = 'test-key';
+  globalThis.fetch = async (url, init = {}) => {
+    calls.push({ url: String(url), init });
+    return new Response(
+      JSON.stringify({ markdown: { data: '# Report\n\nRevenue was **$35,082 million**, see [filing](https://x.test/f).' } }),
+      { status: 200, headers: { 'Content-Type': 'application/json' } },
+    );
+  };
+  try {
+    const r = await fetchSource(URL_A);
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url, 'https://api.context.dev/v1/web/scrape');
+    assert.equal(calls[0].init.method, 'POST');
+    assert.equal(calls[0].init.headers.Authorization, 'Bearer test-key');
+    assert.equal(calls[0].init.headers['Content-Type'], 'application/json');
+    assert.deepEqual(JSON.parse(calls[0].init.body), { url: URL_A, formats: { markdown: true } });
+    assert.deepEqual(r, { ok: true, status: 200, text: 'Report Revenue was $35,082 million, see filing.', via: 'context.dev' });
+
+    // feeds skip Context.dev and go direct
+    calls.length = 0;
+    const feed = await fetchSource('https://example.com/rss/feed.xml');
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url, 'https://example.com/rss/feed.xml');
+    assert.equal(feed.via, 'direct');
+  } finally {
+    globalThis.fetch = realFetch;
+    if (prevKey === undefined) delete process.env.CONTEXT_DEV_API_KEY;
+    else process.env.CONTEXT_DEV_API_KEY = prevKey;
+  }
+});
+
+test('fetchSource: falls back to direct fetch when Context.dev fails', async () => {
+  const realFetch = globalThis.fetch;
+  const calls = [];
+  process.env.CONTEXT_DEV_API_KEY = 'test-key';
+  globalThis.fetch = async (url) => {
+    calls.push(String(url));
+    if (String(url).startsWith('https://api.context.dev/')) return new Response('upstream error', { status: 500 });
+    return new Response('<html><body><p>Gross margin was 57.0% for the period.</p></body></html>', { status: 200 });
+  };
+  try {
+    const r = await fetchSource(URL_A);
+    assert.deepEqual(calls, ['https://api.context.dev/v1/web/scrape', URL_A]);
+    assert.deepEqual(r, { ok: true, status: 200, text: 'Gross margin was 57.0% for the period.', via: 'direct' });
+  } finally {
+    globalThis.fetch = realFetch;
+    delete process.env.CONTEXT_DEV_API_KEY;
+  }
 });

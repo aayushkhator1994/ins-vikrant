@@ -1,0 +1,49 @@
+{
+  "step": "scout-fundamentals",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T00:52:47.328Z",
+  "finished_at": "2026-11-21T00:52:51.278Z",
+  "result": {
+    "scout": "fundamentals",
+    "claims": [
+      {
+        "id": "fundamentals-1",
+        "scout": "fundamentals",
+        "side": "for",
+        "claim": "Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.",
+        "quote": "Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026"
+      },
+      {
+        "id": "fundamentals-2",
+        "scout": "fundamentals",
+        "side": "for",
+        "claim": "Professional Visualization Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.",
+        "quote": "Professional Visualization Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026"
+      },
+      {
+        "id": "fundamentals-3",
+        "scout": "fundamentals",
+        "side": "for",
+        "claim": "Automotive and Robotics Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.",
+        "quote": "Automotive and Robotics Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026"
+      },
+      {
+        "id": "fundamentals-4",
+        "scout": "fundamentals",
+        "side": "for",
+        "claim": "Launched NVIDIA BlueField-4 , the processor for the operating system of AI factories, with industry leaders including CoreWeave, Dell Technologies, Oracle Cloud Infrastructure, Palo Alto Networks, Red Hat and VAST Data building next-generation BlueField&reg;-accelerated data center platforms.",
+        "quote": "Launched NVIDIA BlueField-4 , the processor for the operating system of AI factories, with industry leaders including CoreWeave, Dell Technologies, Oracle Cloud Infrastructure, Palo Alto Networks, Red Hat and VAST Data building next-generation BlueField&reg;-accelerated data center platforms.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026"
+      }
+    ],
+    "lost": false,
+    "attempts": 1,
+    "killed": false,
+    "lost_reasons": [],
+    "sandbox_id": "bx_tpz966ds"
+  }
+}
