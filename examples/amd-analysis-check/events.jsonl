@@ -1,0 +1,39 @@
+{"ts":"2026-11-21T01:06:54.080Z","type":"mission_started","msg":"AMD: What are the key risks in AMD's latest earnings?","mission_id":"amd-analysis-check"}
+{"ts":"2026-11-21T01:06:54.082Z","type":"step_started","msg":"brief","step":"brief"}
+{"ts":"2026-11-21T01:06:54.083Z","type":"step_done","msg":"brief","step":"brief"}
+{"ts":"2026-11-21T01:06:54.083Z","type":"step_started","msg":"scout-fundamentals","step":"scout-fundamentals"}
+{"ts":"2026-11-21T01:06:54.083Z","type":"scout_started","msg":"fundamentals scout launched in its own process","scout":"fundamentals","attempt":1}
+{"ts":"2026-11-21T01:06:54.094Z","type":"step_started","msg":"scout-news","step":"scout-news"}
+{"ts":"2026-11-21T01:06:54.094Z","type":"scout_started","msg":"news scout launched in its own process","scout":"news","attempt":1}
+{"ts":"2026-11-21T01:06:54.095Z","type":"step_started","msg":"scout-readacross","step":"scout-readacross"}
+{"ts":"2026-11-21T01:06:54.095Z","type":"scout_started","msg":"readacross scout launched in its own process","scout":"readacross","attempt":1}
+{"ts":"2026-11-21T01:06:54.433Z","type":"scout_done","msg":"readacross scout returned 5 claims","scout":"readacross","attempt":1,"claims":5}
+{"ts":"2026-11-21T01:06:54.433Z","type":"step_done","msg":"scout-readacross","step":"scout-readacross"}
+{"ts":"2026-11-21T01:06:54.437Z","type":"scout_done","msg":"news scout returned 8 claims","scout":"news","attempt":1,"claims":8}
+{"ts":"2026-11-21T01:06:54.437Z","type":"step_done","msg":"scout-news","step":"scout-news"}
+{"ts":"2026-11-21T01:06:55.038Z","type":"boat_vm_created","msg":"fundamentals scout VM bx_q24p3grs created on boat.dev","sandbox_id":"bx_q24p3grs","scout":"fundamentals"}
+{"ts":"2026-11-21T01:06:57.533Z","type":"boat_vm_stopped","msg":"fundamentals scout VM bx_q24p3grs stopped; its disk is kept as evidence","sandbox_id":"bx_q24p3grs","scout":"fundamentals"}
+{"ts":"2026-11-21T01:06:57.534Z","type":"scout_done","msg":"fundamentals scout returned 0 claims","scout":"fundamentals","attempt":1,"claims":0}
+{"ts":"2026-11-21T01:06:57.535Z","type":"step_done","msg":"scout-fundamentals","step":"scout-fundamentals"}
+{"ts":"2026-11-21T01:06:57.535Z","type":"step_started","msg":"check","step":"check"}
+{"ts":"2026-11-21T01:06:57.828Z","type":"checked","msg":"13 of 13 claims passed the evidence check","stats":{"total":13,"passed":13,"rejected":0,"rejected_share":0}}
+{"ts":"2026-11-21T01:06:57.828Z","type":"step_done","msg":"check","step":"check"}
+{"ts":"2026-11-21T01:06:57.828Z","type":"step_started","msg":"sides","step":"sides"}
+{"ts":"2026-11-21T01:07:01.576Z","type":"sides","msg":"claude-haiku-5-5 labelled 13 checked claims: 7 for, 2 against, 4 irrelevant","model":"claude-haiku-5-5","thesis":"AMD's latest earnings are strong and the key risks are limited."}
+{"ts":"2026-11-21T01:07:01.577Z","type":"step_done","msg":"sides","step":"sides"}
+{"ts":"2026-11-21T01:07:01.577Z","type":"step_started","msg":"debate","step":"debate"}
+{"ts":"2026-11-21T01:07:01.578Z","type":"step_done","msg":"debate","step":"debate"}
+{"ts":"2026-11-21T01:07:01.578Z","type":"step_started","msg":"verdict","step":"verdict"}
+{"ts":"2026-11-21T01:07:01.579Z","type":"verdict","msg":"Supports: 7 for, 2 against","verdict":"Supports"}
+{"ts":"2026-11-21T01:07:01.579Z","type":"step_done","msg":"verdict","step":"verdict"}
+{"ts":"2026-11-21T01:07:01.580Z","type":"step_started","msg":"analysis","step":"analysis"}
+{"ts":"2026-11-21T01:07:05.994Z","type":"analysis","msg":"reasons for and against written by claude-haiku-5-5 via Anthropic","model":"claude-haiku-5-5"}
+{"ts":"2026-11-21T01:07:05.995Z","type":"step_done","msg":"analysis","step":"analysis"}
+{"ts":"2026-11-21T01:07:05.995Z","type":"step_started","msg":"memo","step":"memo"}
+{"ts":"2026-11-21T01:07:05.997Z","type":"step_done","msg":"memo","step":"memo"}
+{"ts":"2026-11-21T01:07:05.997Z","type":"step_started","msg":"veto","step":"veto"}
+{"ts":"2026-11-21T01:07:05.998Z","type":"step_done","msg":"veto","step":"veto"}
+{"ts":"2026-11-21T01:07:05.998Z","type":"step_started","msg":"push","step":"push"}
+{"ts":"2026-11-21T01:07:06.232Z","type":"push_sent","msg":"ntfy responded 200"}
+{"ts":"2026-11-21T01:07:06.233Z","type":"step_done","msg":"push","step":"push"}
+{"ts":"2026-11-21T01:07:06.233Z","type":"mission_done","msg":"AMD: Supports","mission_id":"amd-analysis-check","verdict":"Supports"}

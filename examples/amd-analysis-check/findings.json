@@ -1,0 +1,158 @@
+{
+  "claims": [
+    {
+      "id": "news-2",
+      "scout": "news",
+      "side": "for",
+      "claim": "AMD Posts Beat-And-Raise Report On Record AI Data-Center Sales",
+      "quote": "AMD Posts Beat-And-Raise Report On Record AI Data-Center Sales",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for"
+    },
+    {
+      "id": "news-3",
+      "scout": "news",
+      "side": "against",
+      "claim": "AMD Heads Into Earnings Down Nearly 30% as Fourth-Quarter Guidance Takes Focus",
+      "quote": "AMD Heads Into Earnings Down Nearly 30% as Fourth-Quarter Guidance Takes Focus",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "against"
+    },
+    {
+      "id": "news-4",
+      "scout": "news",
+      "side": "for",
+      "claim": "AMD Stock Jumps After Beat and Strong Q4 Guidance",
+      "quote": "AMD Stock Jumps After Beat and Strong Q4 Guidance",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for"
+    },
+    {
+      "id": "news-5",
+      "scout": "news",
+      "side": "for",
+      "claim": "AI Computing Power Surges! AMD Earnings Call: Data Center Revenue Nearly Doubles, Expected to Account for Over 80% of Total Revenue Next Year",
+      "quote": "AI Computing Power Surges! AMD Earnings Call: Data Center Revenue Nearly Doubles, Expected to Account for Over 80% of Total Revenue Next Year",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for"
+    },
+    {
+      "id": "news-6",
+      "scout": "news",
+      "side": "for",
+      "claim": "AMD gains 4% as revenue guidance top estimates amid strong AI chip demand",
+      "quote": "AMD gains 4% as revenue guidance top estimates amid strong AI chip demand",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for"
+    },
+    {
+      "id": "news-7",
+      "scout": "news",
+      "side": "for",
+      "claim": "AMD's Quarterly Revenue Hits $13.4 Billion as Data Center Sales Double; Strong Guidance Sends Shares Surging After Hours",
+      "quote": "AMD's Quarterly Revenue Hits $13.4 Billion as Data Center Sales Double; Strong Guidance Sends Shares Surging After Hours",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for"
+    },
+    {
+      "id": "news-8",
+      "scout": "news",
+      "side": "for",
+      "claim": "AMD shares jump 7% after stellar earnings 🔼 Will semiconductor stocks return to growth?",
+      "quote": "AMD shares jump 7% after stellar earnings 🔼 Will semiconductor stocks return to growth?",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for"
+    },
+    {
+      "id": "readacross-2",
+      "scout": "readacross",
+      "side": "for",
+      "claim": "AMD Surges 24% in Five Days, Seen Rising Another 15% to Retest $658 Record High",
+      "quote": "AMD Surges 24% in Five Days, Seen Rising Another 15% to Retest $658 Record High",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for"
+    },
+    {
+      "id": "readacross-5",
+      "scout": "readacross",
+      "side": "against",
+      "claim": "AMD to Invest $1 Billion in Meta's Share Sale, but a Warrant for Up to 160 Million Shares May Matter More",
+      "quote": "AMD to Invest $1 Billion in Meta's Share Sale, but a Warrant for Up to 160 Million Shares May Matter More",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for"
+    },
+    {
+      "id": "news-1",
+      "scout": "news",
+      "side": "against",
+      "claim": "AMD Earnings Preview: Q3 2026 Expectations and Key Risks",
+      "quote": "AMD Earnings Preview: Q3 2026 Expectations and Key Risks",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "against",
+      "relevance": "irrelevant"
+    },
+    {
+      "id": "readacross-1",
+      "scout": "readacross",
+      "side": "for",
+      "claim": "AMD expands PsiQuantum partnership to build quantum computing infrastructure",
+      "quote": "AMD expands PsiQuantum partnership to build quantum computing infrastructure",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "for",
+      "relevance": "irrelevant"
+    },
+    {
+      "id": "readacross-3",
+      "scout": "readacross",
+      "side": "against",
+      "claim": "Nebius: Q3 Net Debt Jumped Over 1,243% QoQ, And Capex Covered By Customer Prepayments Carries Risk",
+      "quote": "Nebius: Q3 Net Debt Jumped Over 1,243% QoQ, And Capex Covered By Customer Prepayments Carries Risk",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "against",
+      "relevance": "irrelevant"
+    },
+    {
+      "id": "readacross-4",
+      "scout": "readacross",
+      "side": "against",
+      "claim": "NVIDIA Falls to a Fresh One-Year Low of $162.85, Dragging Chip Peers Down",
+      "quote": "NVIDIA Falls to a Fresh One-Year Low of $162.85, Dragging Chip Peers Down",
+      "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "check": "passed",
+      "fetched_via": "direct",
+      "keyword_side": "against",
+      "relevance": "irrelevant"
+    }
+  ],
+  "stats": {
+    "total": 13,
+    "passed": 13,
+    "rejected": 0,
+    "rejected_share": 0
+  },
+  "thesis": "AMD's latest earnings are strong and the key risks are limited."
+}

@@ -12,6 +12,8 @@ async function boot(t, envExtra = {}, { withSecret = true } = {}) {
   const missionsDir = fs.mkdtempSync(path.join(os.tmpdir(), 'vikrant-bridge-'));
   const calls = [];
   const statuses = new Map();
+  const followUps = [];
+  const followUp = { reply: null }; // null = no model key
   const env = { ...(withSecret ? { BRIDGE_SECRET: SECRET } : {}), ...envExtra };
   const server = createBridge({
     missionsDir,
@@ -21,6 +23,11 @@ async function boot(t, envExtra = {}, { withSecret = true } = {}) {
       return { verdict: 'BUY' };
     },
     missionStatus: (id) => statuses.get(id) ?? { id, state: 'unknown', last_event: null, steps_done: [] },
+    answerFollowUp: async (input) => {
+      followUps.push(input);
+      if (typeof followUp.reply === 'function') return followUp.reply(input);
+      return followUp.reply;
+    },
   });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   t.after(() => {
@@ -28,7 +35,7 @@ async function boot(t, envExtra = {}, { withSecret = true } = {}) {
     server.close();
     fs.rmSync(missionsDir, { recursive: true, force: true });
   });
-  return { port: server.address().port, missionsDir, calls, statuses };
+  return { port: server.address().port, missionsDir, calls, statuses, followUps, followUp };
 }
 
 // Raw http.request so paths like /missions/../../etc/passwd are sent un-normalised.
@@ -196,7 +203,8 @@ test('get_status and why speak the verdict without URLs; unknown tool is named',
 
   plantMission(missionsDir, 'amd-zzz999', {});
   const early = await callTool(port, 'why', { mission_id: 'amd-zzz999' });
-  assert.match(early.json.results[0].result, /not finished/);
+  assert.match(early.json.results[0].result, /amd-zzz999 is still running/);
+  assert.doesNotMatch(early.json.results[0].result, /no verdict to explain/);
   const unknown = await callTool(port, 'launch_missiles', {});
   assert.equal(unknown.json.results[0].result, 'Unknown tool launch_missiles.');
 });
@@ -258,4 +266,119 @@ test('healthz ok, everything else 404', async (t) => {
   assert.deepEqual(ok.json, { ok: true });
   assert.equal((await request(port, { path: '/nope' })).status, 404);
   assert.equal((await request(port, { path: '/vapi/tools' })).status, 404);
+});
+
+const ANALYSED = {
+  mission_id: 'amd-abc123',
+  question: "What are the key risks in AMD's latest earnings?",
+  thesis: "AMD's results are strong and the risks are limited.",
+  verdict: 'Supports',
+  claims_for: 5,
+  claims_against: 2,
+  reasons: ['For [news-1]: "Data center revenue nearly doubles" https://example.com/a'],
+  strongest_counterpoint: '[news-3] "Margin guidance cut" https://example.com/c',
+  analysis: {
+    answer: 'The verdict is Supports. Most checked claims show strong results, with two pointing to risks.',
+    reasons_for: [
+      { id: 'news-1', reason: 'Data center revenue nearly doubled in the quarter.' },
+      { id: 'news-2', reason: 'Revenue guidance came in above estimates.' },
+    ],
+    reasons_against: [{ id: 'news-3', reason: 'Gross margin guidance was cut, see https://example.com/c' }],
+    bottom_line: 'Two more checked claims against would move it to Mixed.',
+    model: 'fake-model',
+    provider: 'Fake',
+  },
+};
+const FINDINGS = {
+  claims: [
+    { id: 'news-1', scout: 'news', side: 'for', claim: 'Data center revenue nearly doubles', quote: 'q', source_url: 'https://example.com/a', check: 'passed' },
+    { id: 'news-3', scout: 'news', side: 'against', claim: 'Margin guidance cut', quote: 'q', source_url: 'https://example.com/c', check: 'passed' },
+    { id: 'news-4', scout: 'news', side: 'for', claim: 'Earnings date announced', quote: 'q', source_url: 'https://example.com/d', check: 'passed', relevance: 'irrelevant' },
+    { id: 'news-5', scout: 'news', side: 'for', claim: 'Made-up number', quote: 'q', source_url: 'https://example.com/e', check: 'quote_not_found' },
+  ],
+  stats: { total: 4, passed: 3, rejected: 1 },
+};
+
+test('why with a model analysis speaks reasons for AND against, no URLs or claim ids', async (t) => {
+  const { port, missionsDir } = await boot(t);
+  plantMission(missionsDir, 'amd-abc123', { 'decision.json': ANALYSED });
+  const why = await callTool(port, 'why', { mission_id: 'amd-abc123' });
+  const spoken = why.json.results[0].result;
+  assert.ok(spoken.startsWith('Mission amd-abc123: Supports, 5 checked claims for and 2 against.'));
+  assert.match(spoken, /Supporting it: Data center revenue nearly doubled in the quarter; Revenue guidance came in above estimates\./);
+  assert.match(spoken, /Against it: Gross margin guidance was cut/);
+  assert.match(spoken, /Two more checked claims against would move it to Mixed\./);
+  assert.doesNotMatch(spoken, /https?:/);
+  assert.doesNotMatch(spoken, /news-\d/);
+
+  // No against reasons: the caller still hears that nothing cuts against it.
+  plantMission(missionsDir, 'amd-noagainst', { 'decision.json': { ...ANALYSED, analysis: { ...ANALYSED.analysis, reasons_against: [] } } });
+  const one = await callTool(port, 'why', { mission_id: 'amd-noagainst' });
+  assert.match(one.json.results[0].result, /Against it: nothing in the checked claims cuts against it\./);
+});
+
+test('why without an analysis still names the strongest claim on each side', async (t) => {
+  const { port, missionsDir } = await boot(t);
+  const { analysis, ...plain } = ANALYSED;
+  plantMission(missionsDir, 'amd-plain01', {
+    'decision.json': { ...plain, bull: { points: [{ id: 'news-1', claim: 'Data center revenue nearly doubles' }] }, bear: { points: [{ id: 'news-3', claim: 'Margin guidance cut' }] } },
+  });
+  const spoken = (await callTool(port, 'why', { mission_id: 'amd-plain01' })).json.results[0].result;
+  assert.match(spoken, /Top reasons:/);
+  assert.match(spoken, /Strongest claim for: Data center revenue nearly doubles\./);
+  assert.match(spoken, /Strongest claim against: Margin guidance cut\./);
+  assert.doesNotMatch(spoken, /https?:/);
+});
+
+test('ask passes the question and checked, relevant claims to answerFollowUp and speaks its text', async (t) => {
+  const { port, missionsDir, followUps, followUp } = await boot(t);
+  plantMission(missionsDir, 'amd-abc123', { 'decision.json': ANALYSED, 'findings.json': FINDINGS });
+  followUp.reply = { text: 'I do not make that call. For: revenue nearly doubled.\nAgainst: margin guidance was cut, see https://example.com/c', model: 'fake-model', provider: 'Fake' };
+  const res = await callTool(port, 'ask', { mission_id: 'amd-abc123', question: 'Should I invest in AMD?' });
+  assert.equal(res.json.results[0].result, 'I do not make that call. For: revenue nearly doubled. Against: margin guidance was cut, see');
+  assert.equal(followUps.length, 1);
+  assert.equal(followUps[0].question, 'Should I invest in AMD?');
+  assert.equal(followUps[0].decision.verdict, 'Supports');
+  assert.equal(followUps[0].dropped, 1);
+  assert.deepEqual(followUps[0].claims, [
+    { id: 'news-1', side: 'for', claim: 'Data center revenue nearly doubles' },
+    { id: 'news-3', side: 'against', claim: 'Margin guidance cut' },
+  ]);
+});
+
+test('ask falls back to the why text when answerFollowUp fails, has no key, throws, or no question is given', async (t) => {
+  const { port, missionsDir, followUps, followUp } = await boot(t);
+  plantMission(missionsDir, 'amd-abc123', { 'decision.json': ANALYSED, 'findings.json': FINDINGS });
+  const why = (await callTool(port, 'why', { mission_id: 'amd-abc123' })).json.results[0].result;
+  const replies = [{ error: 'model timed out' }, null, () => { throw new Error('boom'); }, { text: '   ' }];
+  for (const reply of replies) {
+    followUp.reply = reply;
+    const res = await callTool(port, 'ask', { mission_id: 'amd-abc123', question: 'What about margins?' });
+    assert.equal(res.json.results[0].result, why);
+    assert.doesNotMatch(res.json.results[0].result, /went wrong|cannot answer|can't answer/i);
+  }
+  assert.equal(followUps.length, replies.length);
+  followUp.reply = { text: 'should not be used' };
+  for (const args of [{ mission_id: 'amd-abc123' }, { mission_id: 'amd-abc123', question: '  ' }]) {
+    const res = await callTool(port, 'ask', args);
+    assert.equal(res.json.results[0].result, why);
+  }
+  assert.equal(followUps.length, replies.length);
+});
+
+test('ask and why on an unfinished mission say it is still running, with the latest event', async (t) => {
+  const { port, missionsDir, followUps, followUp } = await boot(t);
+  plantMission(missionsDir, 'amd-run001', {
+    'events.jsonl': `${JSON.stringify({ ts: '2025-01-01T00:00:00Z', type: 'scout_done', msg: 'news scout returned 8 claims https://example.com/x' })}\n`,
+  });
+  followUp.reply = { text: 'should not be used' };
+  for (const [name, args] of [['why', { mission_id: 'amd-run001' }], ['ask', { mission_id: 'amd-run001', question: 'Why?' }]]) {
+    const spoken = (await callTool(port, name, args)).json.results[0].result;
+    assert.match(spoken, /Mission amd-run001 is still running/);
+    assert.match(spoken, /Latest: news scout returned 8 claims\./);
+    assert.doesNotMatch(spoken, /https?:/);
+  }
+  assert.equal(followUps.length, 0);
+  const missing = await callTool(port, 'ask', { mission_id: 'amd-nope', question: 'Why?' });
+  assert.equal(missing.json.results[0].result, 'I cannot find mission amd-nope.');
 });

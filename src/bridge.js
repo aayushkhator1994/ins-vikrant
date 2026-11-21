@@ -212,7 +212,7 @@ function renderMemo(md) {
   return out.join('\n');
 }
 
-export function createBridge({ missionsDir = 'missions', runMission, missionStatus, env = process.env } = {}) {
+export function createBridge({ missionsDir = 'missions', runMission, missionStatus, answerFollowUp, env = process.env } = {}) {
   const started = new Map(); // id -> start ts, for missions whose directory may not exist yet
 
   const dailyCap = () => {
@@ -257,6 +257,65 @@ export function createBridge({ missionsDir = 'missions', runMission, missionStat
     const events = readEvents(dir);
     if (d) return { id, state: 'done', verdict: d.verdict, claims_for: d.claims_for, claims_against: d.claims_against, last_event: events.at(-1), steps_done: [] };
     return { id, state: events.length || fs.existsSync(dir) ? 'running' : 'unknown', last_event: events.at(-1), steps_done: [] };
+  }
+
+  // "Still running" line for a mission with no verdict yet, with the latest event (as get_status gives).
+  async function notFinished(r) {
+    const { id } = r;
+    if (!r.known && !started.has(id)) return `I cannot find mission ${id}.`;
+    let st = null;
+    try {
+      st = typeof missionStatus === 'function' ? await missionStatus(id, missionsDir) : null;
+    } catch {}
+    const ev = (st && st.last_event) || diskStatus(id).last_event;
+    const last = speak(ev && typeof ev === 'object' ? ev.msg ?? ev.type : ev, 160);
+    return `Mission ${id} is still running, so there is no verdict yet.${last ? ` Latest: ${sentence(last)}` : ''} Ask again in a few seconds.`;
+  }
+
+  const words = (s) => (s.match(/\S+/g) || []).length;
+  const pointText = (side) => {
+    const c = side && Array.isArray(side.points) ? side.points[0] : null;
+    return c && typeof c === 'object' ? speak(c.claim || c.quote, 200) : '';
+  };
+
+  // The spoken explanation of a finished mission: verdict, counts, reasons for AND against.
+  function explain(id, d) {
+    const verdict = speak(d.verdict, 80) || 'no verdict';
+    const an = d.analysis && typeof d.analysis === 'object' ? d.analysis : null;
+    const answer = an ? speak(an.answer, 400) : '';
+    if (answer) {
+      const list = (arr) =>
+        (Array.isArray(arr) ? arr : []).map((x) => speak(x && typeof x === 'object' ? x.reason : x, 240).replace(/[.!?…]+$/, '')).filter(Boolean).slice(0, 3);
+      const head = `Mission ${id}: ${verdict}, ${count(d.claims_for)} checked claims for and ${count(d.claims_against)} against. ${sentence(answer)}`;
+      const bottom = speak(an.bottom_line, 260);
+      const build = (n) => {
+        const f = list(an.reasons_for).slice(0, n);
+        const a = list(an.reasons_against).slice(0, n);
+        let out = `${head} Supporting it: ${f.length ? sentence(f.join('; ')) : 'nothing in the checked claims supports it.'}`;
+        out += ` Against it: ${a.length ? sentence(a.join('; ')) : 'nothing in the checked claims cuts against it.'}`;
+        if (bottom) out += ` ${sentence(bottom)}`;
+        return out;
+      };
+      // Keep it to about 130 spoken words: fewer reasons per side before any hard cut.
+      let out = build(3);
+      for (let n = 2; n >= 1 && words(out) > 130; n--) out = build(n);
+      return speak(out, 1100);
+    }
+    const reasons = (Array.isArray(d.reasons) ? d.reasons : [])
+      .map((x) => speak(typeof x === 'string' ? x : x?.text ?? x?.reason ?? '', 220))
+      .filter(Boolean)
+      .slice(0, 3);
+    const cp = speak(d.strongest_counterpoint, 260);
+    let out = `Mission ${id} verdict: ${sentence(verdict)}`;
+    out += reasons.length ? ` Top reasons: ${reasons.map((x, i) => `${i + 1}, ${sentence(x)}`).join(' ')}` : ' No reasons were recorded.';
+    if (cp) out += ` Strongest counterpoint: ${sentence(cp)}`;
+    const bull = pointText(d.bull);
+    const bear = pointText(d.bear);
+    if (bull || bear) {
+      out += ` Strongest claim for: ${bull ? sentence(bull) : 'none passed the check.'}`;
+      out += ` Strongest claim against: ${bear ? sentence(bear) : 'none passed the check.'}`;
+    }
+    return speak(out, 1400);
   }
 
   const tools = {
@@ -306,18 +365,36 @@ export function createBridge({ missionsDir = 'missions', runMission, missionStat
     async why(args) {
       const r = resolveId(args.mission_id);
       if (r.error) return r.error;
+      const d = readJson(path.join(missionsDir, r.id, 'decision.json'));
+      if (!d) return notFinished(r);
+      return explain(r.id, d);
+    },
+
+    // Any follow-up question about a finished mission, answered from its checked claims.
+    async ask(args) {
+      const r = resolveId(args.mission_id);
+      if (r.error) return r.error;
       const { id } = r;
-      const d = readJson(path.join(missionsDir, id, 'decision.json'));
-      if (!d) return r.known ? `Mission ${id} has not finished yet, so there is no verdict to explain.` : `I cannot find mission ${id}.`;
-      const reasons = (Array.isArray(d.reasons) ? d.reasons : [])
-        .map((x) => speak(typeof x === 'string' ? x : x?.text ?? x?.reason ?? '', 220))
-        .filter(Boolean)
-        .slice(0, 3);
-      const cp = speak(d.strongest_counterpoint, 260);
-      let out = `Mission ${id} verdict: ${sentence(speak(d.verdict, 80) || 'none')}`;
-      out += reasons.length ? ` Top reasons: ${reasons.map((x, i) => `${i + 1}, ${sentence(x)}`).join(' ')}` : ' No reasons were recorded.';
-      if (cp) out += ` Strongest counterpoint: ${sentence(cp)}`;
-      return out;
+      const dir = path.join(missionsDir, id);
+      const d = readJson(path.join(dir, 'decision.json'));
+      if (!d) return notFinished(r);
+      const question = typeof args.question === 'string' ? args.question.replace(/\s+/g, ' ').trim().slice(0, 600) : '';
+      if (!question || typeof answerFollowUp !== 'function') return explain(id, d);
+      const findings = readJson(path.join(dir, 'findings.json'));
+      const all = (findings && Array.isArray(findings.claims) ? findings.claims : []).filter((c) => c && typeof c === 'object');
+      const claims = all
+        .filter((c) => c.check === 'passed' && c.relevance !== 'irrelevant')
+        .slice(0, 30)
+        .map((c) => ({ id: c.id, side: c.side, claim: c.claim }));
+      const dropped = all.filter((c) => c.check !== 'passed').length;
+      let a = null;
+      try {
+        a = await answerFollowUp({ question, decision: d, claims, dropped });
+      } catch (err) {
+        console.error(`[bridge] follow-up answer for ${id} failed:`, err);
+      }
+      const spoken = a && typeof a === 'object' && typeof a.text === 'string' ? speak(a.text, 900) : '';
+      return spoken || explain(id, d);
     },
 
     async stop_mission(args) {
@@ -451,9 +528,10 @@ ${events ? `<ol class="events">${events}</ol>` : '<p class="empty">No events yet
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const { runMission, missionStatus } = await import('./mission.js');
+  const { answerFollowUp } = await import('./analysis.js');
   const port = Number(process.env.PORT) || 8787;
   if (!process.env.BRIDGE_SECRET) console.warn('[bridge] BRIDGE_SECRET is not set: every /vapi/tools call will be refused with 503.');
-  createBridge({ runMission, missionStatus }).listen(port, () => {
+  createBridge({ runMission, missionStatus, answerFollowUp }).listen(port, () => {
     console.log(`INS Vikrant bridge listening on http://localhost:${port}`);
   });
 }

@@ -1,0 +1,27 @@
+{
+  "step": "sides",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T01:06:57.828Z",
+  "finished_at": "2026-11-21T01:07:01.576Z",
+  "result": {
+    "thesis": "AMD's latest earnings are strong and the key risks are limited.",
+    "sides": {
+      "news-1": "irrelevant",
+      "news-2": "for",
+      "news-3": "against",
+      "news-4": "for",
+      "news-5": "for",
+      "news-6": "for",
+      "news-7": "for",
+      "news-8": "for",
+      "readacross-1": "irrelevant",
+      "readacross-2": "for",
+      "readacross-3": "irrelevant",
+      "readacross-4": "irrelevant",
+      "readacross-5": "against"
+    },
+    "model": "claude-haiku-5-5",
+    "provider": "Anthropic"
+  }
+}

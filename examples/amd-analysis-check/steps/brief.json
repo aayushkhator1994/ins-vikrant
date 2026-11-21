@@ -1,0 +1,19 @@
+{
+  "step": "brief",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T01:06:54.082Z",
+  "finished_at": "2026-11-21T01:06:54.082Z",
+  "result": {
+    "id": "amd-analysis-check",
+    "ticker": "AMD",
+    "company": "AMD",
+    "question": "What are the key risks in AMD's latest earnings?",
+    "focus": [
+      "data center",
+      "guidance",
+      "risk"
+    ],
+    "sources": []
+  }
+}

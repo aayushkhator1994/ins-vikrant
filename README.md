@@ -21,7 +21,8 @@ You call the number and ask a question out loud. The voice agent restates it and
 | Mission runner | `src/mission.js` | Runs the steps, relaunches a scout that dies, writes the memo and a per-ticker veto file, and sends an ntfy push. |
 | Boat VM | `src/boat.js` | With `BOAT_API_KEY` set, the Fundamentals scout runs on its own boat.dev VM: created for the mission, given the brief, and stopped afterwards so its disk is kept as evidence. The VM holds no keys. |
 | Context.dev | `src/checker.js` | With `CONTEXT_DEV_API_KEY` set, pages are fetched through Context.dev's scrape API. A quote is rejected only if it is also missing from the raw page. |
-| Bridge | `src/bridge.js` | Tool endpoint for a Vapi voice assistant (`start_mission`, `get_status`, `why`, `stop_mission`) and a read-only timeline page. |
+| Analysis | `src/analysis.js` | With a model key set, Claude sees only claims that passed the checker. It states the thesis being tested, labels each claim for, against or not relevant, and writes the reasons on both sides. The counts and the verdict are still computed in code. |
+| Bridge | `src/bridge.js` | Tool endpoint for a Vapi voice assistant (`start_mission`, `get_status`, `why`, `ask`, `stop_mission`) and a read-only timeline page. `ask` answers follow-up questions from the mission's checked claims. |
 
 ## Run it
 
@@ -42,7 +43,7 @@ BRIDGE_SECRET=change-me npm run bridge
 
 ### Phone entry point
 
-The phone number is a Vapi assistant whose four tools call the bridge.
+The phone number is a Vapi assistant whose five tools call the bridge.
 
 ```sh
 cp .env.example .env            # fill in the values
@@ -87,9 +88,9 @@ Recorded missions: [`examples/nvda-boat-2/`](examples/nvda-boat-2/) ran with a B
 
 - **Every scout on Boat.** Only the Fundamentals scout runs on a Boat VM; News and Read-across run as local processes, and the bridge runs on a laptop. The kill test kills a local process, not a VM.
 - **Band, and the rest of Context.dev.** Handoffs are function calls recorded in `events.jsonl`, not messages in a Band room. Only Context.dev's scrape API is used; headlines come from Google News RSS, and there are no monitors.
-- **New York Token Exchange.** `src/llm.js` can write a captain's briefing through it from checked claims, but it has not been run with a key.
+- **New York Token Exchange.** `src/llm.js` can route the model calls through it instead of Anthropic, but that path has not been run with a key.
 - **Always-on bridge.** The phone number works while the bridge runs on a laptop behind an ngrok tunnel; it is not hosted on a Boat VM. The tool calls were verified through the public URL with simulated Vapi requests.
-- **Model-written arguments.** Scouts, Bull, Bear and the captain are deterministic code. Sides are assigned by keyword counting, which is crude, so there is no model comparison and no replay-accuracy score.
+- **Model comparison and replay accuracy.** Claude labels each checked claim and writes the reasons, but its labels vary a little between runs, and there is no replay set or comparison across models. The scouts and the Bull and Bear texts are still deterministic code.
 - **Prompt-injection measurement.** Covered by a unit test of the checker only, not by planted pages fed to live scouts.
 - **Standing watch.** No monitors or webhooks.
 - **Stopping a mission.** `stop_mission` writes a `STOP` flag; the runner does not read it yet.

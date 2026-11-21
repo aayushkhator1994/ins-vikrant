@@ -1,0 +1,57 @@
+{
+  "step": "scout-readacross",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T01:06:54.095Z",
+  "finished_at": "2026-11-21T01:06:54.433Z",
+  "result": {
+    "scout": "readacross",
+    "claims": [
+      {
+        "id": "readacross-1",
+        "scout": "readacross",
+        "side": "for",
+        "claim": "AMD expands PsiQuantum partnership to build quantum computing infrastructure",
+        "quote": "AMD expands PsiQuantum partnership to build quantum computing infrastructure",
+        "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "readacross-2",
+        "scout": "readacross",
+        "side": "for",
+        "claim": "AMD Surges 24% in Five Days, Seen Rising Another 15% to Retest $658 Record High",
+        "quote": "AMD Surges 24% in Five Days, Seen Rising Another 15% to Retest $658 Record High",
+        "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "readacross-3",
+        "scout": "readacross",
+        "side": "against",
+        "claim": "Nebius: Q3 Net Debt Jumped Over 1,243% QoQ, And Capex Covered By Customer Prepayments Carries Risk",
+        "quote": "Nebius: Q3 Net Debt Jumped Over 1,243% QoQ, And Capex Covered By Customer Prepayments Carries Risk",
+        "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "readacross-4",
+        "scout": "readacross",
+        "side": "against",
+        "claim": "NVIDIA Falls to a Fresh One-Year Low of $162.85, Dragging Chip Peers Down",
+        "quote": "NVIDIA Falls to a Fresh One-Year Low of $162.85, Dragging Chip Peers Down",
+        "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "readacross-5",
+        "scout": "readacross",
+        "side": "for",
+        "claim": "AMD to Invest $1 Billion in Meta's Share Sale, but a Warrant for Up to 160 Million Shares May Matter More",
+        "quote": "AMD to Invest $1 Billion in Meta's Share Sale, but a Warrant for Up to 160 Million Shares May Matter More",
+        "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      }
+    ],
+    "lost": false,
+    "attempts": 1,
+    "killed": false,
+    "lost_reasons": [],
+    "sandbox_id": null
+  }
+}

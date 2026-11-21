@@ -1,0 +1,12 @@
+{
+  "id": "amd-analysis-check",
+  "ticker": "AMD",
+  "company": "AMD",
+  "question": "What are the key risks in AMD's latest earnings?",
+  "focus": [
+    "data center",
+    "guidance",
+    "risk"
+  ],
+  "sources": []
+}

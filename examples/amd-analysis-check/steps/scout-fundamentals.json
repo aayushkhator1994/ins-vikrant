@@ -1,0 +1,16 @@
+{
+  "step": "scout-fundamentals",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T01:06:54.083Z",
+  "finished_at": "2026-11-21T01:06:57.534Z",
+  "result": {
+    "scout": "fundamentals",
+    "claims": [],
+    "lost": false,
+    "attempts": 1,
+    "killed": false,
+    "lost_reasons": [],
+    "sandbox_id": "bx_q24p3grs"
+  }
+}

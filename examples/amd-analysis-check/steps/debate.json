@@ -1,0 +1,120 @@
+{
+  "step": "debate",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T01:07:01.578Z",
+  "finished_at": "2026-11-21T01:07:01.578Z",
+  "result": {
+    "bull": {
+      "argument": "Bull (the evidence supports the story) rests on 7 checked claims: [news-4] \"AMD Stock Jumps After Beat and Strong Q4 Guidance\"; [news-5] \"AI Computing Power Surges! AMD Earnings Call: Data Center Revenue Nearly Doubles, Expected to Account for Over 80% of Total Revenue Next Year\"; [news-6] \"AMD gains 4% as revenue guidance top estimates amid strong AI chip demand\"",
+      "points": [
+        {
+          "id": "news-4",
+          "scout": "news",
+          "side": "for",
+          "claim": "AMD Stock Jumps After Beat and Strong Q4 Guidance",
+          "quote": "AMD Stock Jumps After Beat and Strong Q4 Guidance",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "for"
+        },
+        {
+          "id": "news-5",
+          "scout": "news",
+          "side": "for",
+          "claim": "AI Computing Power Surges! AMD Earnings Call: Data Center Revenue Nearly Doubles, Expected to Account for Over 80% of Total Revenue Next Year",
+          "quote": "AI Computing Power Surges! AMD Earnings Call: Data Center Revenue Nearly Doubles, Expected to Account for Over 80% of Total Revenue Next Year",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "for"
+        },
+        {
+          "id": "news-6",
+          "scout": "news",
+          "side": "for",
+          "claim": "AMD gains 4% as revenue guidance top estimates amid strong AI chip demand",
+          "quote": "AMD gains 4% as revenue guidance top estimates amid strong AI chip demand",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "for"
+        },
+        {
+          "id": "news-7",
+          "scout": "news",
+          "side": "for",
+          "claim": "AMD's Quarterly Revenue Hits $13.4 Billion as Data Center Sales Double; Strong Guidance Sends Shares Surging After Hours",
+          "quote": "AMD's Quarterly Revenue Hits $13.4 Billion as Data Center Sales Double; Strong Guidance Sends Shares Surging After Hours",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "for"
+        },
+        {
+          "id": "news-8",
+          "scout": "news",
+          "side": "for",
+          "claim": "AMD shares jump 7% after stellar earnings 🔼 Will semiconductor stocks return to growth?",
+          "quote": "AMD shares jump 7% after stellar earnings 🔼 Will semiconductor stocks return to growth?",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "for"
+        },
+        {
+          "id": "readacross-2",
+          "scout": "readacross",
+          "side": "for",
+          "claim": "AMD Surges 24% in Five Days, Seen Rising Another 15% to Retest $658 Record High",
+          "quote": "AMD Surges 24% in Five Days, Seen Rising Another 15% to Retest $658 Record High",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "for"
+        },
+        {
+          "id": "news-2",
+          "scout": "news",
+          "side": "for",
+          "claim": "AMD Posts Beat-And-Raise Report On Record AI Data-Center Sales",
+          "quote": "AMD Posts Beat-And-Raise Report On Record AI Data-Center Sales",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "for"
+        }
+      ],
+      "rebuttal": "Bear's strongest claim is [news-3] \"AMD Heads Into Earnings Down Nearly 30% as Fourth-Quarter Guidance Takes Focus\". Bull answers with [news-5] \"AI Computing Power Surges! AMD Earnings Call: Data Center Revenue Nearly Doubles, Expected to Account for Over 80% of Total Revenue Next Year\"."
+    },
+    "bear": {
+      "argument": "Bear (the evidence cuts against the story) rests on 2 checked claims: [news-3] \"AMD Heads Into Earnings Down Nearly 30% as Fourth-Quarter Guidance Takes Focus\"; [readacross-5] \"AMD to Invest $1 Billion in Meta's Share Sale, but a Warrant for Up to 160 Million Shares May Matter More\"",
+      "points": [
+        {
+          "id": "news-3",
+          "scout": "news",
+          "side": "against",
+          "claim": "AMD Heads Into Earnings Down Nearly 30% as Fourth-Quarter Guidance Takes Focus",
+          "quote": "AMD Heads Into Earnings Down Nearly 30% as Fourth-Quarter Guidance Takes Focus",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20earnings%20data%20center%20guidance%20risk%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "against"
+        },
+        {
+          "id": "readacross-5",
+          "scout": "readacross",
+          "side": "against",
+          "claim": "AMD to Invest $1 Billion in Meta's Share Sale, but a Warrant for Up to 160 Million Shares May Matter More",
+          "quote": "AMD to Invest $1 Billion in Meta's Share Sale, but a Warrant for Up to 160 Million Shares May Matter More",
+          "source_url": "https://news.google.com/rss/search?q=AMD%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "check": "passed",
+          "fetched_via": "direct",
+          "keyword_side": "for"
+        }
+      ],
+      "rebuttal": "Bull's strongest claim is [news-4] \"AMD Stock Jumps After Beat and Strong Q4 Guidance\". Bear answers with [news-3] \"AMD Heads Into Earnings Down Nearly 30% as Fourth-Quarter Guidance Takes Focus\"."
+    }
+  }
+}
