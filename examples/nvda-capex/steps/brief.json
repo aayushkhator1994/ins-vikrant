@@ -1,0 +1,21 @@
+{
+  "step": "brief",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T00:41:16.244Z",
+  "finished_at": "2026-11-21T00:41:16.244Z",
+  "result": {
+    "id": "nvda-capex",
+    "ticker": "NVDA",
+    "company": "NVIDIA",
+    "question": "Do Nvidia's earnings support the AI capex story?",
+    "focus": [
+      "data center",
+      "guidance",
+      "revenue"
+    ],
+    "sources": [
+      "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026"
+    ]
+  }
+}

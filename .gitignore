@@ -1,0 +1,7 @@
+node_modules/
+missions/
+veto/
+.env
+.DS_Store
+*.log
+*.pdf

@@ -1,0 +1,174 @@
+{
+  "mission_id": "nvda-capex",
+  "ticker": "NVDA",
+  "question": "Do Nvidia's earnings support the AI capex story?",
+  "verdict": "Supports",
+  "claims_for": 11,
+  "claims_against": 5,
+  "reasons": [
+    "For [fundamentals-1]: \"Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.\" https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026",
+    "For [fundamentals-2]: \"Professional Visualization Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.\" https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026",
+    "For [fundamentals-3]: \"Automotive and Robotics Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.\" https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026"
+  ],
+  "strongest_counterpoint": "[news-7] \"Nvidia shares end nearly 3% lower in choppy post-earnings trading session\" https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+  "would_change_mind": "Supports holds while claims for are at least double claims against (11 vs 5). 1 more checked claim against (for example a cut or decline in data center, guidance, revenue) would move it to Mixed.",
+  "dropped_claims": [],
+  "bull": {
+    "argument": "Bull (the evidence supports the story) rests on 11 checked claims: [fundamentals-1] \"Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.\"; [fundamentals-2] \"Professional Visualization Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.\"; [fundamentals-3] \"Automotive and Robotics Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.\"",
+    "points": [
+      {
+        "id": "fundamentals-1",
+        "scout": "fundamentals",
+        "side": "for",
+        "claim": "Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.",
+        "quote": "Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026",
+        "check": "passed"
+      },
+      {
+        "id": "fundamentals-2",
+        "scout": "fundamentals",
+        "side": "for",
+        "claim": "Professional Visualization Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.",
+        "quote": "Professional Visualization Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026",
+        "check": "passed"
+      },
+      {
+        "id": "fundamentals-3",
+        "scout": "fundamentals",
+        "side": "for",
+        "claim": "Automotive and Robotics Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.",
+        "quote": "Automotive and Robotics Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026",
+        "check": "passed"
+      },
+      {
+        "id": "fundamentals-4",
+        "scout": "fundamentals",
+        "side": "for",
+        "claim": "Launched NVIDIA BlueField-4 , the processor for the operating system of AI factories, with industry leaders including CoreWeave, Dell Technologies, Oracle Cloud Infrastructure, Palo Alto Networks, Red Hat and VAST Data building next-generation BlueField&reg;-accelerated data center platforms.",
+        "quote": "Launched NVIDIA BlueField-4 , the processor for the operating system of AI factories, with industry leaders including CoreWeave, Dell Technologies, Oracle Cloud Infrastructure, Palo Alto Networks, Red Hat and VAST Data building next-generation BlueField&reg;-accelerated data center platforms.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026",
+        "check": "passed"
+      },
+      {
+        "id": "news-6",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia Q3 Revenue Surges 103%, Next-Quarter Revenue Guidance Reaches $130 Billion, Shares Briefly Rise Over 4% After Hours",
+        "quote": "Nvidia Q3 Revenue Surges 103%, Next-Quarter Revenue Guidance Reaches $130 Billion, Shares Briefly Rise Over 4% After Hours",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "news-1",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia Earnings Preview: Can Data Center Growth Sustain Its Profit Boom?",
+        "quote": "Nvidia Earnings Preview: Can Data Center Growth Sustain Its Profit Boom?",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "news-2",
+        "scout": "news",
+        "side": "for",
+        "claim": "Instant view: Nvidia earnings beat estimates; attention turns to call",
+        "quote": "Instant view: Nvidia earnings beat estimates; attention turns to call",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "news-3",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia Reports Faster Growth, Says Jensen Huang Won’t Return as CEO",
+        "quote": "Nvidia Reports Faster Growth, Says Jensen Huang Won’t Return as CEO",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "news-4",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
+        "quote": "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "news-5",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia shares rise on earnings beat, raised outlook despite leadership uncertainty",
+        "quote": "Nvidia shares rise on earnings beat, raised outlook despite leadership uncertainty",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "readacross-4",
+        "scout": "readacross",
+        "side": "for",
+        "claim": "Andy Jassy Says Nvidia “Will Be Very Strong” for Years, Even as Amazon’s Own Chips Grow Triple Digits",
+        "quote": "Andy Jassy Says Nvidia “Will Be Very Strong” for Years, Even as Amazon’s Own Chips Grow Triple Digits",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      }
+    ],
+    "rebuttal": "Bear's strongest claim is [news-7] \"Nvidia shares end nearly 3% lower in choppy post-earnings trading session\". Bull answers with [news-5] \"Nvidia shares rise on earnings beat, raised outlook despite leadership uncertainty\"."
+  },
+  "bear": {
+    "argument": "Bear (the evidence cuts against the story) rests on 5 checked claims: [news-7] \"Nvidia shares end nearly 3% lower in choppy post-earnings trading session\"; [news-8] \"Nvidia Reports Earnings Tuesday Without Jensen Huang for the First Time. It Promised $108 Billion, and the Stock Fell After 3 of Its Last 4 Reports\"; [readacross-1] \"Markets sell off worldwide as further conflict looms in the Middle East and Elon Musk cuts capex guidance\"",
+    "points": [
+      {
+        "id": "news-7",
+        "scout": "news",
+        "side": "against",
+        "claim": "Nvidia shares end nearly 3% lower in choppy post-earnings trading session",
+        "quote": "Nvidia shares end nearly 3% lower in choppy post-earnings trading session",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "news-8",
+        "scout": "news",
+        "side": "against",
+        "claim": "Nvidia Reports Earnings Tuesday Without Jensen Huang for the First Time. It Promised $108 Billion, and the Stock Fell After 3 of Its Last 4 Reports",
+        "quote": "Nvidia Reports Earnings Tuesday Without Jensen Huang for the First Time. It Promised $108 Billion, and the Stock Fell After 3 of Its Last 4 Reports",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "readacross-1",
+        "scout": "readacross",
+        "side": "against",
+        "claim": "Markets sell off worldwide as further conflict looms in the Middle East and Elon Musk cuts capex guidance",
+        "quote": "Markets sell off worldwide as further conflict looms in the Middle East and Elon Musk cuts capex guidance",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "readacross-2",
+        "scout": "readacross",
+        "side": "against",
+        "claim": "Nebius: Q3 Net Debt Jumped Over 1,243% QoQ, And Capex Covered By Customer Prepayments Carries Risk",
+        "quote": "Nebius: Q3 Net Debt Jumped Over 1,243% QoQ, And Capex Covered By Customer Prepayments Carries Risk",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      },
+      {
+        "id": "readacross-3",
+        "scout": "readacross",
+        "side": "against",
+        "claim": "Nvidia Outlook Analysis: What Risks Does NVDA Face Amid Jensen Huang \"Spy Case,\" Congressional Probe and AI Bubble Concerns?",
+        "quote": "Nvidia Outlook Analysis: What Risks Does NVDA Face Amid Jensen Huang \"Spy Case,\" Congressional Probe and AI Bubble Concerns?",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20supplier%20OR%20customer%20OR%20competitor%20capex%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+        "check": "passed"
+      }
+    ],
+    "rebuttal": "Bull's strongest claim is [fundamentals-1] \"Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.\". Bear answers with [news-8] \"Nvidia Reports Earnings Tuesday Without Jensen Huang for the First Time. It Promised $108 Billion, and the Stock Fell After 3 of Its Last 4 Reports\"."
+  },
+  "disclaimer": "Research only. Not investment advice; no buy or sell recommendation.",
+  "finished_at": "2026-11-21T00:41:17.422Z"
+}

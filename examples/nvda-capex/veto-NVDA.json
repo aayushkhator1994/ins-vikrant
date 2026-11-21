@@ -1,0 +1,37 @@
+{
+  "ticker": "NVDA",
+  "mission_id": "nvda-capex",
+  "verdict": "Supports",
+  "claims_for": 11,
+  "claims_against": 5,
+  "verdict_changed": true,
+  "changed_claims": [
+    "Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.",
+    "Professional Visualization Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.",
+    "Automotive and Robotics Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.",
+    "Launched NVIDIA BlueField-4 , the processor for the operating system of AI factories, with industry leaders including CoreWeave, Dell Technologies, Oracle Cloud Infrastructure, Palo Alto Networks, Red Hat and VAST Data building next-generation BlueField&reg;-accelerated data center platforms."
+  ],
+  "claims": [
+    "Highlights Data Center Third-quarter revenue was a record $51.2 billion, up 25% from the previous quarter and up 66% from a year ago.",
+    "Professional Visualization Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.",
+    "Automotive and Robotics Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.",
+    "Launched NVIDIA BlueField-4 , the processor for the operating system of AI factories, with industry leaders including CoreWeave, Dell Technologies, Oracle Cloud Infrastructure, Palo Alto Networks, Red Hat and VAST Data building next-generation BlueField&reg;-accelerated data center platforms.",
+    "Nvidia Earnings Preview: Can Data Center Growth Sustain Its Profit Boom?",
+    "Instant view: Nvidia earnings beat estimates; attention turns to call",
+    "Nvidia Reports Faster Growth, Says Jensen Huang Won’t Return as CEO",
+    "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
+    "Nvidia shares rise on earnings beat, raised outlook despite leadership uncertainty",
+    "Nvidia Q3 Revenue Surges 103%, Next-Quarter Revenue Guidance Reaches $130 Billion, Shares Briefly Rise Over 4% After Hours",
+    "Nvidia shares end nearly 3% lower in choppy post-earnings trading session",
+    "Nvidia Reports Earnings Tuesday Without Jensen Huang for the First Time. It Promised $108 Billion, and the Stock Fell After 3 of Its Last 4 Reports",
+    "Markets sell off worldwide as further conflict looms in the Middle East and Elon Musk cuts capex guidance",
+    "Nebius: Q3 Net Debt Jumped Over 1,243% QoQ, And Capex Covered By Customer Prepayments Carries Risk",
+    "Nvidia Outlook Analysis: What Risks Does NVDA Face Amid Jensen Huang \"Spy Case,\" Congressional Probe and AI Bubble Concerns?",
+    "Andy Jassy Says Nvidia “Will Be Very Strong” for Years, Even as Amazon’s Own Chips Grow Triple Digits"
+  ],
+  "new_filings": [
+    "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026"
+  ],
+  "next_earnings_date": null,
+  "updated_at": "2026-11-21T00:41:17.424Z"
+}

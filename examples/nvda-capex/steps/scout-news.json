@@ -1,0 +1,82 @@
+{
+  "step": "scout-news",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T00:41:16.246Z",
+  "finished_at": "2026-11-21T00:41:17.100Z",
+  "result": {
+    "scout": "news",
+    "claims": [
+      {
+        "id": "news-1",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia Earnings Preview: Can Data Center Growth Sustain Its Profit Boom?",
+        "quote": "Nvidia Earnings Preview: Can Data Center Growth Sustain Its Profit Boom?",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "news-2",
+        "scout": "news",
+        "side": "for",
+        "claim": "Instant view: Nvidia earnings beat estimates; attention turns to call",
+        "quote": "Instant view: Nvidia earnings beat estimates; attention turns to call",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "news-3",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia Reports Faster Growth, Says Jensen Huang Won’t Return as CEO",
+        "quote": "Nvidia Reports Faster Growth, Says Jensen Huang Won’t Return as CEO",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "news-4",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
+        "quote": "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "news-5",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia shares rise on earnings beat, raised outlook despite leadership uncertainty",
+        "quote": "Nvidia shares rise on earnings beat, raised outlook despite leadership uncertainty",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "news-6",
+        "scout": "news",
+        "side": "for",
+        "claim": "Nvidia Q3 Revenue Surges 103%, Next-Quarter Revenue Guidance Reaches $130 Billion, Shares Briefly Rise Over 4% After Hours",
+        "quote": "Nvidia Q3 Revenue Surges 103%, Next-Quarter Revenue Guidance Reaches $130 Billion, Shares Briefly Rise Over 4% After Hours",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "news-7",
+        "scout": "news",
+        "side": "against",
+        "claim": "Nvidia shares end nearly 3% lower in choppy post-earnings trading session",
+        "quote": "Nvidia shares end nearly 3% lower in choppy post-earnings trading session",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      },
+      {
+        "id": "news-8",
+        "scout": "news",
+        "side": "against",
+        "claim": "Nvidia Reports Earnings Tuesday Without Jensen Huang for the First Time. It Promised $108 Billion, and the Stock Fell After 3 of Its Last 4 Reports",
+        "quote": "Nvidia Reports Earnings Tuesday Without Jensen Huang for the First Time. It Promised $108 Billion, and the Stock Fell After 3 of Its Last 4 Reports",
+        "source_url": "https://news.google.com/rss/search?q=NVIDIA%20earnings%20data%20center%20guidance%20revenue%20when%3A30d&hl=en-US&gl=US&ceid=US:en"
+      }
+    ],
+    "lost": false,
+    "attempts": 2,
+    "killed": true,
+    "lost_reasons": [
+      "process killed (SIGKILL)"
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{"ts":"2026-11-21T00:41:16.242Z","type":"mission_started","msg":"NVDA: Do Nvidia's earnings support the AI capex story?","mission_id":"nvda-capex"}
+{"ts":"2026-11-21T00:41:16.244Z","type":"step_started","msg":"brief","step":"brief"}
+{"ts":"2026-11-21T00:41:16.244Z","type":"step_done","msg":"brief","step":"brief"}
+{"ts":"2026-11-21T00:41:16.244Z","type":"step_started","msg":"scout-fundamentals","step":"scout-fundamentals"}
+{"ts":"2026-11-21T00:41:16.245Z","type":"scout_started","msg":"fundamentals scout launched in its own process","scout":"fundamentals","attempt":1}
+{"ts":"2026-11-21T00:41:16.246Z","type":"step_started","msg":"scout-news","step":"scout-news"}
+{"ts":"2026-11-21T00:41:16.246Z","type":"scout_started","msg":"news scout launched in its own process","scout":"news","attempt":1}
+{"ts":"2026-11-21T00:41:16.246Z","type":"step_started","msg":"scout-readacross","step":"scout-readacross"}
+{"ts":"2026-11-21T00:41:16.246Z","type":"scout_started","msg":"readacross scout launched in its own process","scout":"readacross","attempt":1}
+{"ts":"2026-11-21T00:41:16.577Z","type":"scout_done","msg":"readacross scout returned 4 claims","scout":"readacross","attempt":1,"claims":4}
+{"ts":"2026-11-21T00:41:16.578Z","type":"step_done","msg":"scout-readacross","step":"scout-readacross"}
+{"ts":"2026-11-21T00:41:16.603Z","type":"scout_done","msg":"fundamentals scout returned 4 claims","scout":"fundamentals","attempt":1,"claims":4}
+{"ts":"2026-11-21T00:41:16.603Z","type":"step_done","msg":"scout-fundamentals","step":"scout-fundamentals"}
+{"ts":"2026-11-21T00:41:16.746Z","type":"scout_killed","msg":"news scout machine deleted mid-mission (SIGKILL pid 27635)","scout":"news","pid":27635}
+{"ts":"2026-11-21T00:41:16.750Z","type":"scout_lost","msg":"news scout lost: process killed (SIGKILL)","scout":"news","attempt":1,"reason":"process killed (SIGKILL)"}
+{"ts":"2026-11-21T00:41:16.750Z","type":"scout_relaunched","msg":"news scout relaunched in a fresh process (attempt 2)","scout":"news","attempt":2}
+{"ts":"2026-11-21T00:41:17.100Z","type":"scout_done","msg":"news scout returned 8 claims","scout":"news","attempt":2,"claims":8}
+{"ts":"2026-11-21T00:41:17.100Z","type":"step_done","msg":"scout-news","step":"scout-news"}
+{"ts":"2026-11-21T00:41:17.100Z","type":"step_started","msg":"check","step":"check"}
+{"ts":"2026-11-21T00:41:17.420Z","type":"checked","msg":"16 of 16 claims passed the evidence check","stats":{"total":16,"passed":16,"rejected":0,"rejected_share":0}}
+{"ts":"2026-11-21T00:41:17.421Z","type":"step_done","msg":"check","step":"check"}
+{"ts":"2026-11-21T00:41:17.421Z","type":"step_started","msg":"debate","step":"debate"}
+{"ts":"2026-11-21T00:41:17.422Z","type":"step_done","msg":"debate","step":"debate"}
+{"ts":"2026-11-21T00:41:17.422Z","type":"step_started","msg":"verdict","step":"verdict"}
+{"ts":"2026-11-21T00:41:17.422Z","type":"verdict","msg":"Supports: 11 for, 5 against","verdict":"Supports"}
+{"ts":"2026-11-21T00:41:17.423Z","type":"step_done","msg":"verdict","step":"verdict"}
+{"ts":"2026-11-21T00:41:17.423Z","type":"step_started","msg":"memo","step":"memo"}
+{"ts":"2026-11-21T00:41:17.424Z","type":"step_done","msg":"memo","step":"memo"}
+{"ts":"2026-11-21T00:41:17.424Z","type":"step_started","msg":"veto","step":"veto"}
+{"ts":"2026-11-21T00:41:17.424Z","type":"step_done","msg":"veto","step":"veto"}
+{"ts":"2026-11-21T00:41:17.425Z","type":"step_started","msg":"push","step":"push"}
+{"ts":"2026-11-21T00:41:17.425Z","type":"push_skipped","msg":"NTFY_TOPIC not set"}
+{"ts":"2026-11-21T00:41:17.425Z","type":"step_done","msg":"push","step":"push"}
+{"ts":"2026-11-21T00:41:17.425Z","type":"mission_done","msg":"NVDA: Supports","mission_id":"nvda-capex","verdict":"Supports"}

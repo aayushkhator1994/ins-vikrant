@@ -1,0 +1,14 @@
+{
+  "name": "ins-vikrant",
+  "version": "0.1.0",
+  "description": "Evidence-checked research missions you run from a phone call",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test test/",
+    "mission": "node src/mission.js",
+    "bridge": "node src/bridge.js",
+    "fakes": "node scripts/planted-fakes.js"
+  }
+}

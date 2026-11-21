@@ -1,0 +1,11 @@
+{
+  "step": "veto",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T00:41:17.424Z",
+  "finished_at": "2026-11-21T00:41:17.424Z",
+  "result": {
+    "path": "veto/NVDA.json",
+    "verdict_changed": true
+  }
+}

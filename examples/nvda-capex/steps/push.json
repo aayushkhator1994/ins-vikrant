@@ -1,0 +1,10 @@
+{
+  "step": "push",
+  "status": "done",
+  "attempts": 1,
+  "started_at": "2026-11-21T00:41:17.425Z",
+  "finished_at": "2026-11-21T00:41:17.425Z",
+  "result": {
+    "pushed": false
+  }
+}
