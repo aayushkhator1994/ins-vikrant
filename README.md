@@ -48,7 +48,7 @@ The phone number is a Vapi assistant whose five tools call the bridge.
 ```sh
 cp .env.example .env            # fill in the values
 ngrok http 8787                 # put the https URL in .env as PUBLIC_URL
-node --env-file=.env src/bridge.js
+npm start                       # runs the bridge with exactly what is in .env
 node --env-file=.env scripts/setup-vapi.js   # creates the assistant and attaches it to your number
 ```
 
