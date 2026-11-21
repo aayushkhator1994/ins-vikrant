@@ -1,0 +1,32 @@
+$ node --env-file=.env scripts/planted-fakes.js   (2026-11-21T01:17:02Z)
+fetched  https://en.wikipedia.org/wiki/Nvidia (status 200, 182258 chars)
+fetched  https://en.wikipedia.org/wiki/The_Home_Depot (status 200, 106920 chars)
+fetched  https://www.sec.gov/about/what-we-do (status 200, 5072 chars)
+fetched  https://en.wikipedia.org/wiki/Form_10-K (status 200, 13958 chars)
+fetched  https://en.wikipedia.org/wiki/Earnings_call (status 200, 7438 chars)
+
+id                kind           host                check
+------------------------------------------------------------------------
+control-1         control        en.wikipedia.org    passed
+control-2         control        en.wikipedia.org    passed
+control-3         control        en.wikipedia.org    passed
+control-4         control        en.wikipedia.org    passed
+control-5         control        www.sec.gov         passed
+control-6         control        www.sec.gov         passed
+control-7         control        en.wikipedia.org    passed
+control-8         control        en.wikipedia.org    passed
+control-9         control        en.wikipedia.org    passed
+fake-invented-1   fake-invented  en.wikipedia.org    quote_not_found
+fake-invented-2   fake-invented  en.wikipedia.org    quote_not_found
+fake-invented-3   fake-invented  www.sec.gov         quote_not_found
+fake-invented-4   fake-invented  en.wikipedia.org    quote_not_found
+fake-invented-5   fake-invented  en.wikipedia.org    quote_not_found
+fake-mutated-1    fake-mutated   en.wikipedia.org    quote_not_found
+fake-mutated-2    fake-mutated   en.wikipedia.org    quote_not_found
+fake-mutated-3    fake-mutated   www.sec.gov         quote_not_found
+fake-mutated-4    fake-mutated   en.wikipedia.org    quote_not_found
+fake-mutated-5    fake-mutated   en.wikipedia.org    quote_not_found
+
+Planted fakes caught: 10 of 10
+Controls passed: 9 of 9
+exit code: 0

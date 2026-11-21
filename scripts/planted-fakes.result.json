@@ -1,18 +1,17 @@
 {
-  "ran_at": "2026-11-21T00:40:19.852Z",
+  "ran_at": "2026-11-21T01:17:07.468Z",
   "urls": [
     "https://en.wikipedia.org/wiki/Nvidia",
     "https://en.wikipedia.org/wiki/The_Home_Depot",
+    "https://www.sec.gov/about/what-we-do",
     "https://en.wikipedia.org/wiki/Form_10-K",
     "https://en.wikipedia.org/wiki/Earnings_call"
   ],
-  "urls_skipped": [
-    "https://www.sec.gov/about/what-we-do"
-  ],
+  "urls_skipped": [],
   "fakes_caught": 10,
   "fakes_total": 10,
-  "controls_passed": 8,
-  "controls_total": 8,
+  "controls_passed": 9,
+  "controls_total": 9,
   "rows": [
     {
       "id": "control-1",
@@ -20,7 +19,7 @@
       "url": "https://en.wikipedia.org/wiki/Nvidia",
       "host": "en.wikipedia.org",
       "check": "passed",
-      "quote": "Founded in 1993 by Jensen Huang , Chris Malachowsky , and Curtis Priem , Nvidia is among the largest companies by market capitalization"
+      "quote": "Founded in 1993 by Jensen Huang, Chris Malachowsky, and Curtis Priem, Nvidia is among the largest companies by market capitalization"
     },
     {
       "id": "control-2",
@@ -28,7 +27,7 @@
       "url": "https://en.wikipedia.org/wiki/Nvidia",
       "host": "en.wikipedia.org",
       "check": "passed",
-      "quote": "In 2025, Nvidia became the first company to surpass US$4 trillion and US$5 trillion in market capitalization , largely driven by the AI boom and soaring demand for its AI data center hardware"
+      "quote": "In 2025, Nvidia became the first company to surpass US$4 trillion and US$5 trillion in market capitalization, largely driven by the AI boom and soaring demand for its AI data center hardware"
     },
     {
       "id": "control-3",
@@ -36,7 +35,7 @@
       "url": "https://en.wikipedia.org/wiki/The_Home_Depot",
       "host": "en.wikipedia.org",
       "check": "passed",
-      "quote": "Virgin Islands ); all 10 provinces of Canada; and all 31 Mexican states and Mexico City"
+      "quote": "A Home Depot store in Onalaska, Wisconsin Type Public Traded as - NYSE: HD<br>- DJIA component<br>- S&P 100 component<br>- S&P 500 component Industry Retail (home improvement) Founded February 6, 1978; 48 years ago in Marietta, Georgia, U.S"
     },
     {
       "id": "control-4",
@@ -44,10 +43,26 @@
       "url": "https://en.wikipedia.org/wiki/The_Home_Depot",
       "host": "en.wikipedia.org",
       "check": "passed",
-      "quote": "Interline Brands ( The Home Depot Pro ), a maintenance, repair, and operations company is also owned by The Home Depot, with 70 distribution centers across the United States"
+      "quote": "Virgin Islands); all 10 provinces of Canada; and all 31 Mexican states and Mexico City"
     },
     {
       "id": "control-5",
+      "kind": "control",
+      "url": "https://www.sec.gov/about/what-we-do",
+      "host": "www.sec.gov",
+      "check": "passed",
+      "quote": "9, 2023 At the Securities and Exchange Commission (SEC), we work together to make a positive impact on the U.S"
+    },
+    {
+      "id": "control-6",
+      "kind": "control",
+      "url": "https://www.sec.gov/about/what-we-do",
+      "host": "www.sec.gov",
+      "check": "passed",
+      "quote": "Since our founding in 1934 at the height of the Great Depression, we have stayed true to our mission of protecting investors, maintaining fair, orderly, and efficient markets, and facilitating capital formation"
+    },
+    {
+      "id": "control-7",
       "kind": "control",
       "url": "https://en.wikipedia.org/wiki/Form_10-K",
       "host": "en.wikipedia.org",
@@ -55,28 +70,20 @@
       "quote": "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure 3.2.7 Item 9A"
     },
     {
-      "id": "control-6",
+      "id": "control-8",
       "kind": "control",
       "url": "https://en.wikipedia.org/wiki/Form_10-K",
       "host": "en.wikipedia.org",
       "check": "passed",
-      "quote": "The 10-K includes information such as company history, organizational structure, executive compensation , equity , subsidiaries , and audited financial statements , among other information"
+      "quote": "The 10-K includes information such as company history, organizational structure, executive compensation, equity, subsidiaries, and audited financial statements, among other information"
     },
     {
-      "id": "control-7",
+      "id": "control-9",
       "kind": "control",
       "url": "https://en.wikipedia.org/wiki/Earnings_call",
       "host": "en.wikipedia.org",
       "check": "passed",
-      "quote": "In the United States, a 2014 survey by the National Investor Relations Institute (NIRI) found that 97% of its member companies conducted quarterly earnings calls, with most offering webcasts"
-    },
-    {
-      "id": "control-8",
-      "kind": "control",
-      "url": "https://en.wikipedia.org/wiki/Earnings_call",
-      "host": "en.wikipedia.org",
-      "check": "passed",
-      "quote": "Text is available under the Creative Commons Attribution-ShareAlike 4.0 License ; additional terms may apply"
+      "quote": "Text is available under the Creative Commons Attribution-ShareAlike 4.0 License; additional terms may apply"
     },
     {
       "id": "fake-invented-1",
@@ -97,15 +104,15 @@
     {
       "id": "fake-invented-3",
       "kind": "fake-invented",
-      "url": "https://en.wikipedia.org/wiki/Form_10-K",
-      "host": "en.wikipedia.org",
+      "url": "https://www.sec.gov/about/what-we-do",
+      "host": "www.sec.gov",
       "check": "quote_not_found",
       "quote": "Comparable store sales declined 23.6% after the company closed 312 locations in the quarter."
     },
     {
       "id": "fake-invented-4",
       "kind": "fake-invented",
-      "url": "https://en.wikipedia.org/wiki/Earnings_call",
+      "url": "https://en.wikipedia.org/wiki/Form_10-K",
       "host": "en.wikipedia.org",
       "check": "quote_not_found",
       "quote": "Management lowered full-year guidance to $8.2 billion citing a 55% drop in backlog."
@@ -113,7 +120,7 @@
     {
       "id": "fake-invented-5",
       "kind": "fake-invented",
-      "url": "https://en.wikipedia.org/wiki/Nvidia",
+      "url": "https://en.wikipedia.org/wiki/Earnings_call",
       "host": "en.wikipedia.org",
       "check": "quote_not_found",
       "quote": "The auditor issued a going concern warning after cash reserves dropped to $19 million."
@@ -124,7 +131,7 @@
       "url": "https://en.wikipedia.org/wiki/Nvidia",
       "host": "en.wikipedia.org",
       "check": "quote_not_found",
-      "quote": "Founded in 2000 by Jensen Huang , Chris Malachowsky , and Curtis Priem , Nvidia is among the largest companies by market capitalization"
+      "quote": "Founded in 2000 by Jensen Huang, Chris Malachowsky, and Curtis Priem, Nvidia is among the largest companies by market capitalization"
     },
     {
       "id": "fake-mutated-2",
@@ -132,10 +139,18 @@
       "url": "https://en.wikipedia.org/wiki/The_Home_Depot",
       "host": "en.wikipedia.org",
       "check": "quote_not_found",
-      "quote": "Virgin Islands ); all 17 provinces of Canada; and all 31 Mexican states and Mexico City"
+      "quote": "A Home Depot store in Onalaska, Wisconsin Type Public Traded as - NYSE: HD<br>- DJIA component<br>- S&P 107 component<br>- S&P 500 component Industry Retail (home improvement) Founded February 6, 1978; 48 years ago in Marietta, Georgia, U.S"
     },
     {
       "id": "fake-mutated-3",
+      "kind": "fake-mutated",
+      "url": "https://www.sec.gov/about/what-we-do",
+      "host": "www.sec.gov",
+      "check": "quote_not_found",
+      "quote": "16, 2023 At the Securities and Exchange Commission (SEC), we work together to make a positive impact on the U.S"
+    },
+    {
+      "id": "fake-mutated-4",
       "kind": "fake-mutated",
       "url": "https://en.wikipedia.org/wiki/Form_10-K",
       "host": "en.wikipedia.org",
@@ -143,20 +158,12 @@
       "quote": "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure 10.2.7 Item 9A"
     },
     {
-      "id": "fake-mutated-4",
+      "id": "fake-mutated-5",
       "kind": "fake-mutated",
       "url": "https://en.wikipedia.org/wiki/Earnings_call",
       "host": "en.wikipedia.org",
       "check": "quote_not_found",
-      "quote": "In the United States, a 2021 survey by the National Investor Relations Institute (NIRI) found that 97% of its member companies conducted quarterly earnings calls, with most offering webcasts"
-    },
-    {
-      "id": "fake-mutated-5",
-      "kind": "fake-mutated",
-      "url": "https://en.wikipedia.org/wiki/Nvidia",
-      "host": "en.wikipedia.org",
-      "check": "quote_not_found",
-      "quote": "In 2032, Nvidia became the first company to surpass US$4 trillion and US$5 trillion in market capitalization , largely driven by the AI boom and soaring demand for its AI data center hardware"
+      "quote": "Text is available under the Creative Commons Attribution-ShareAlike 11.0 License; additional terms may apply"
     }
   ]
 }

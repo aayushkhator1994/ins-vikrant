@@ -1,0 +1,47 @@
+$ node --env-file=.env src/mission.js --ticker NVDA --company NVIDIA --question "Do Nvidia's earnings support the AI capex story?" --focus "data center,guidance,revenue" --kill-scout news --id nvda-kill-demo   (2026-11-21T01:17:07Z)
+[01:17:07] mission_started  NVDA: Do Nvidia's earnings support the AI capex story?
+[01:17:07] step_started     brief
+[01:17:07] step_done        brief
+[01:17:07] step_started     scout-fundamentals
+[01:17:07] scout_started    fundamentals scout launched in its own process
+[01:17:07] step_started     scout-news
+[01:17:07] scout_started    news scout launched in its own process
+[01:17:07] step_started     scout-readacross
+[01:17:07] scout_started    readacross scout launched in its own process
+[01:17:08] scout_killed     news scout machine deleted mid-mission (SIGKILL pid 31455)
+[01:17:08] scout_lost       news scout lost: process killed (SIGKILL)
+[01:17:08] scout_relaunched news scout relaunched in a fresh process (attempt 2)
+[01:17:08] scout_done       readacross scout returned 4 claims
+[01:17:08] step_done        scout-readacross
+[01:17:08] boat_vm_created  fundamentals scout VM bx_9ahkt9dr created on boat.dev
+[01:17:08] scout_done       news scout returned 8 claims
+[01:17:08] step_done        scout-news
+[01:17:12] boat_vm_stopped  fundamentals scout VM bx_9ahkt9dr stopped; its disk is kept as evidence
+[01:17:12] scout_done       fundamentals scout returned 4 claims
+[01:17:12] step_done        scout-fundamentals
+[01:17:12] step_started     check
+[01:17:12] checked          16 of 16 claims passed the evidence check
+[01:17:12] step_done        check
+[01:17:12] step_started     sides
+[01:17:16] sides            claude-haiku-5-5 labelled 16 checked claims: 9 for, 5 against, 2 irrelevant
+[01:17:16] step_done        sides
+[01:17:16] step_started     debate
+[01:17:16] step_done        debate
+[01:17:16] step_started     verdict
+[01:17:16] verdict          Mixed: 9 for, 5 against
+[01:17:16] step_done        verdict
+[01:17:16] step_started     analysis
+[01:17:22] analysis         reasons for and against written by claude-haiku-5-5 via Anthropic
+[01:17:22] step_done        analysis
+[01:17:22] step_started     memo
+[01:17:22] step_done        memo
+[01:17:22] step_started     veto
+[01:17:22] step_done        veto
+[01:17:22] step_started     push
+[01:17:22] push_sent        ntfy responded 200
+[01:17:22] step_done        push
+[01:17:22] mission_done     NVDA: Mixed
+
+Memo: missions/nvda-kill-demo/memo.md
+NVDA: Mixed, 9 claims for, 5 against (0 dropped by the checker).
+exit code: 0

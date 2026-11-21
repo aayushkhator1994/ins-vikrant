@@ -1,0 +1,66 @@
+$ npm test   (2026-11-21T01:17:02Z, commit d378d31)
+
+> ins-vikrant@0.1.0 test
+> node --test test/
+
+✔ parseJson handles code fences, surrounding prose and junk (1.016792ms)
+✔ classifySides keeps valid labels, drops unknown ids and invalid labels (0.365708ms)
+✔ classifySides caps the thesis and the claims it sends (0.247ms)
+✔ classifySides: incomplete labels, bad JSON, no key, failures (21.813917ms)
+✔ analyze drops reasons citing an unknown id or listed on the wrong side (0.316875ms)
+✔ analyze: empty answer is an error, no key is null, never throws (0.170208ms)
+✔ answerFollowUp passes text through and sends the verdict, analysis and claims (0.180792ms)
+✔ answerFollowUp returns the error on timeout or failure, null with no key (19.681375ms)
+✔ missing BRIDGE_SECRET -> 503, never runs open (8.236166ms)
+✔ wrong or absent secret -> 401 (2.579417ms)
+✔ caller not on allowlist -> 403; listed caller passes (1.770542ms)
+✔ valid start_mission -> 200, result names the mission id, runMission called once (1.563792ms)
+✔ arguments as a JSON string, and message.toolCalls alias, both work (1.135792ms)
+✔ start_mission validation explains what is missing (1.298875ms)
+✔ daily cap of 1 -> second start refused (1.329917ms)
+✔ stop_mission asks for a yes, then writes STOP when confirmed (2.825958ms)
+✔ get_status and why speak the verdict without URLs; unknown tool is named (2.384833ms)
+✔ invalid JSON and oversized bodies -> 400 (1.105833ms)
+✔ GET /missions escapes markup planted on disk (1.96475ms)
+✔ GET /missions/:id renders the memo, 404 when missing, traversal ids rejected (2.448458ms)
+✔ healthz ok, everything else 404 (1.06325ms)
+✔ why with a model analysis speaks reasons for AND against, no URLs or claim ids (1.607375ms)
+✔ why without an analysis still names the strongest claim on each side (0.862708ms)
+✔ ask passes the question and checked, relevant claims to answerFollowUp and speaks its text (1.029792ms)
+[bridge] follow-up answer for amd-abc123 failed: Error: boom
+    at replies.text [as reply] (file://test/bridge.test.js:353:70)
+    at answerFollowUp (file://test/bridge.test.js:28:65)
+    at Object.ask (file://src/bridge.js:392:19)
+    at handleTools (file://src/bridge.js:459:37)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+✔ ask falls back to the why text when answerFollowUp fails, has no key, throws, or no question is given (4.086125ms)
+✔ ask and why on an unfinished mission say it is still running, with the latest event (1.404333ms)
+✔ normalize: case, whitespace, curly quotes, dashes (0.506458ms)
+✔ htmlToText: removes script/style/noscript/comments and decodes entities (0.380584ms)
+✔ htmlToText: plain text returned as is, CDATA text kept (0.045334ms)
+✔ extractNumbers: commas removed, decimals canonical (0.296541ms)
+✔ checkClaim: passed (0.230041ms)
+✔ checkClaim: source_unreachable (bad url, not ok, throws) (0.124458ms)
+✔ checkClaim: quote_not_found (absent, empty, too short) (0.083417ms)
+✔ checkClaim: number_not_in_quote (0.04975ms)
+✔ checkClaim: 57 in claim matches 57.0 in quote (0.053916ms)
+✔ checkClaim: quote matches despite different whitespace, case and quote style (0.145208ms)
+✔ planted instruction page cannot talk the checker into passing (0.180666ms)
+✔ checkClaims: fetches each distinct URL once, preserves order, stats math (0.618167ms)
+✔ checkClaims: empty input (0.082709ms)
+✔ markdownToText: link, image, heading, bold, table row (0.294541ms)
+✔ checkClaim: copies via from the fetch result as fetched_via (0.079792ms)
+✔ fetchSource: uses Context.dev when CONTEXT_DEV_API_KEY is set (10.023416ms)
+✔ fetchSource: falls back to direct fetch when Context.dev fails (0.176875ms)
+✔ runStep runs fn once, then returns the recorded result (2.355833ms)
+✔ force re-runs a finished step (0.971125ms)
+✔ a failed step is recorded and re-runs with attempts incremented (1.207334ms)
+✔ logEvent appends JSON lines; writeJson/readJson round-trip (0.798917ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 47
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 136.471958

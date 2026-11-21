@@ -1,0 +1,99 @@
+Every request to the bridge's /vapi/tools endpoint, oldest first (local time, PST).
+Captured from the tunnel's request inspector. Phone numbers are cut to the last four digits.
+'simulated request' rows were sent with curl during development; 'phone call' rows came from Vapi during a real call.
+
+2026-11-20T16:45:07  HTTP 200  simulated request, caller ending 9114
+    tool: start_mission({"ticker": "NVDA", "company": "NVIDIA", "question": "Do Nvidia's earnings support the AI capex story?", "focus": "data center,guidance"})
+    bridge: {"results":[{"toolCallId":"t1","result":"Mission nvda-mwportf4 started. I am researching: Do Nvidia's earnings support the AI capex story?. I will push the verdict when it is ready."}]}
+
+2026-11-20T16:45:07  HTTP 401  simulated request, no caller number
+    tool: (no tool)
+    bridge: {"error":"bad secret"}
+
+2026-11-20T16:45:08  HTTP 403  simulated request, caller ending 1111
+    tool: (no tool)
+    bridge: {"error":"caller not allowed"}
+
+2026-11-20T16:45:13  HTTP 200  simulated request, caller ending 9114
+    tool: get_status({})
+    bridge: {"results":[{"toolCallId":"t2","result":"Mission nvda-mwportf4 is done. Supports: 11 checked claims for, 3 against."}]}
+
+2026-11-20T16:53:12  HTTP 200  simulated request, caller ending 9114
+    tool: start_mission({"ticker": "NVDA", "company": "NVIDIA", "question": "Do Nvidia's earnings support the AI capex story?", "focus": "data center,guidance"})
+    bridge: {"results":[{"toolCallId":"t1","result":"Mission nvda-mwpp275i started. I am researching: Do Nvidia's earnings support the AI capex story?. I will push the verdict when it is ready."}]}
+
+2026-11-20T16:55:30  HTTP 403  phone call, caller ending 8254
+    tool: start_mission({"ticker": "NVDA", "company": "NVIDIA", "question": "Do NVIDIA's earnings support the AI CapEx story?", "focus": "data center revenue,guidan)
+    bridge: {"error":"caller not allowed"}
+
+2026-11-20T16:56:18  HTTP 403  phone call, caller ending 8254
+    tool: get_status({})
+    bridge: {"error":"caller not allowed"}
+
+2026-11-20T16:58:45  HTTP 200  phone call, caller ending 8254
+    tool: start_mission({"ticker": "NVDA", "company": "NVIDIA", "question": "Do media earnings support the AI CapEx story?", "focus": "data center revenue,guidance")
+    bridge: {"results":[{"toolCallId":"call_Ob1QjRXRddVLbzVi4UzOECaW","result":"Mission nvda-mwpp9bxk started. I am researching: Do media earnings support the AI CapEx story?. I will push the verdict when it is ready."}]}
+
+2026-11-20T16:59:59  HTTP 200  phone call, caller ending 8254
+    tool: start_mission({"ticker": "ARM", "company": "ARM", "question": "Do media earnings support the AI CapEx story?", "focus": "data center revenue,guidance"})
+    bridge: {"results":[{"toolCallId":"call_A2pmDzswrmCLHjSgCvwXOhur","result":"Mission arm-mwppaxnf started. I am researching: Do media earnings support the AI CapEx story?. I will push the verdict when it is ready."}]}
+
+2026-11-20T17:00:23  HTTP 200  phone call, caller ending 8254
+    tool: start_mission({"ticker": "AMD", "company": "AMD", "question": "Do media earnings support the AI CapEx story?", "focus": "data center revenue,guidance"})
+    bridge: {"results":[{"toolCallId":"call_ab2q1PAFLt6tMtPa7jbkFWT6","result":"Mission amd-mwppbfwl started. I am researching: Do media earnings support the AI CapEx story?. I will push the verdict when it is ready."}]}
+
+2026-11-20T17:01:05  HTTP 200  phone call, caller ending 8254
+    tool: why({"mission_id": "amd-mwppbfwl"})
+    bridge: {"results":[{"toolCallId":"call_KNI2Kl1IWaGniz5yy6psH7Pr","result":"Mission amd-mwppbfwl verdict: Supports. Top reasons: 1, For [news-1]: \"AMD's data center revenue nearly doubles in Q3 and CEO Su expects growth to accelerate\". 2, For [news-2]: \"AMD stock f
+
+2026-11-20T17:01:34  HTTP 200  phone call, caller ending 8254
+    tool: start_mission({"ticker": "AMD", "company": "AMD", "question": "What are the key risks mentioned in AMD's Q3 2026 earnings preview?", "focus": "data center)
+    bridge: {"results":[{"toolCallId":"call_bmbnRJMhYvpcNhGn0eME413g","result":"Mission amd-mwppcyy4 started. I am researching: What are the key risks mentioned in AMD's Q3 2026 earnings preview?. I will push the verdict when it is ready."}]}
+
+2026-11-20T17:01:54  HTTP 200  phone call, caller ending 8254
+    tool: why({"mission_id": "amd-mwppcyy4"})
+    bridge: {"results":[{"toolCallId":"call_B9O2DuSEhpGKAEck0vaVtSOg","result":"Mission amd-mwppcyy4 verdict: Supports. Top reasons: 1, For [news-1]: \"AMD's data center revenue nearly doubles in Q3 and CEO Su expects growth to accelerate\". 2, For [news-2]: \"AMD stock f
+
+2026-11-20T17:07:35  HTTP 200  simulated request, caller ending 9114
+    tool: why({"mission_id": "amd-analysis-check"})
+    bridge: {"results":[{"toolCallId":"t","result":"Mission amd-analysis-check: Supports, 7 checked claims for and 2 against. The verdict is Supports: the claims describe a strong quarter, with revenue of $13.4 Billion and data center sales doubling, and the thesis that t
+
+2026-11-20T17:07:36  HTTP 200  simulated request, caller ending 9114
+    tool: ask({"mission_id": "amd-analysis-check", "question": "What is the biggest risk for AMD right now?"})
+    bridge: {"results":[{"toolCallId":"t","result":"The checked evidence points to two risks. AMD's $1 billion investment in Meta's share sale comes with a warrant for up to 160 million shares, which may matter more than the investment itself. The stock was also down near
+
+2026-11-20T17:12:09  HTTP 403  phone call, caller ending 8254
+    tool: start_mission({"ticker": "NVDA", "company": "NVIDIA", "question": "Research NVIDIA's stock in relation to its capital expenditures.", "focus": "CapEx"})
+    bridge: {"error":"caller not allowed"}
+
+2026-11-20T17:12:18  HTTP 403  phone call, caller ending 8254
+    tool: start_mission({"ticker": "NVDA", "company": "NVIDIA", "question": "Research NVIDIA's stock in relation to its data center.", "focus": "data center"})
+    bridge: {"error":"caller not allowed"}
+
+2026-11-20T17:12:53  HTTP 200  simulated request, caller ending 9114
+    tool: get_status({})
+    bridge: {"results":[{"toolCallId":"t","result":"Mission amd-analysis-check is done. Supports: 7 checked claims for, 2 against."}]}
+
+2026-11-20T17:12:53  HTTP 200  simulated request, caller ending 8254
+    tool: get_status({})
+    bridge: {"results":[{"toolCallId":"t","result":"Mission amd-analysis-check is done. Supports: 7 checked claims for, 2 against."}]}
+
+2026-11-20T17:13:22  HTTP 200  phone call, caller ending 8254
+    tool: start_mission({"ticker": "NVDA", "company": "NVIDIA", "question": "What are the current trends and projections for NVIDIA's capital expenditures (CapEx)?")
+    bridge: {"results":[{"toolCallId":"call_izouXuKHLVB7oGJR4pbSY4UC","result":"Mission nvda-mwpps5dk started. I am researching: What are the current trends and projections for NVIDIA's capital expenditures (CapEx)?. I will push the verdict when it is ready."}]}
+
+2026-11-20T17:13:55  HTTP 200  phone call, caller ending 8254
+    tool: why({"mission_id": "nvda-mwpps5dk"})
+    bridge: {"results":[{"toolCallId":"call_hbgx3d2s6WY3eY8yFxJyYrYX","result":"Mission nvda-mwpps5dk: Contradicts, 1 checked claims for and 8 against. The verdict is Contradicts: the checked claims point to downgraded accelerator capex forecasts and expectations of slowe
+
+2026-11-20T17:14:19  HTTP 200  phone call, caller ending 8254
+    tool: ask({"question": "Can you do a deep research and be very sure about it?", "mission_id": "nvda-mwpps5dk"})
+    bridge: {"results":[{"toolCallId":"call_fcbsL2wBa8rI3TI8LgjPI3JF","result":"I can't be very sure, because this check covered only nine claims, mostly news items. They lean against the idea that NVIDIA's capex is rising. SemiAnalysis cut its accelerator capex forecast 
+
+2026-11-20T17:14:42  HTTP 200  phone call, caller ending 8254
+    tool: start_mission({"ticker": "NVDA", "company": "NVIDIA", "question": "Gather detailed information on NVIDIA's reported CapEx figures and guidance.", "focus":)
+    bridge: {"results":[{"toolCallId":"call_P7ZE7kwuP3Aie9vprwhjnjUk","result":"Mission nvda-mwpptuuv started. I am researching: Gather detailed information on NVIDIA's reported CapEx figures and guidance.. I will push the verdict when it is ready."}]}
+
+2026-11-20T17:15:06  HTTP 200  phone call, caller ending 8254
+    tool: why({"mission_id": "nvda-mwpptuuv"})
+    bridge: {"results":[{"toolCallId":"call_1EeyOsh4LmUOlPESk3tVTEJ8","result":"Mission nvda-mwpptuuv: Mixed, 3 checked claims for and 5 against. The verdict is Mixed: the claims show strong reported figures and guidance, including $115.8 Billion in revenue and six straig

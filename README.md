@@ -58,20 +58,24 @@ Each mission writes `missions/<id>/`: `brief.json`, `steps/*.json`, `events.json
 
 ## Measured numbers
 
-Measured on Nov 20, 2026. Nothing here is estimated.
+Measured on Nov 20, 2026. Nothing here is estimated. The raw output is in [`evidence/`](evidence/README.md).
 
 | Number | Result | How it was measured |
 |---|---|---|
 | Planted fakes caught | 10 of 10 | `npm run fakes`: 5 invented quotes and 5 real sentences with one number changed, each attached to a real URL |
-| Real quotes passed (controls) | 8 of 8 | Same run: real sentences from 4 live pages. A fifth page (sec.gov) was unreachable and skipped |
-| Missions that survive a lost scout | 2 of 2 | `--kill-scout news`: the scout process is killed mid-mission, relaunched, and the mission reaches a verdict |
-| Claims rejected in live missions | 0 of 28 | The first two NVDA missions. The scouts quote pages verbatim, so the checker had nothing to reject; the planted-fakes run is the test of the checker |
-| Mission time | about 1.5 s local, about 5 s with a Boat VM | One NVDA mission, three scouts, 16 claims checked |
-| Scout run on a Boat VM | 2 of 2 missions | The Fundamentals VM was created, returned 4 claims and was stopped in about 3 s each time |
+| Real quotes passed (controls) | 9 of 9 | Same run: real sentences from live pages. Pages that could not be fetched are skipped and listed in the output |
+| Missions that survive a lost scout | 3 of 3 | `--kill-scout news`: the scout process is killed mid-mission, relaunched, and the mission reaches a verdict |
+| Claims rejected in live missions | 0 of 182 | 14 missions. The scouts quote pages word for word, so the checker had nothing to reject; the planted-fakes run is the test of the checker |
+| Mission time | about 1.5 s local, 5 s with a Boat VM, 12 to 15 s with Claude analysis | NVDA missions, three scouts, 16 claims checked |
+| Scout run on a Boat VM | 11 of 11 missions | Every mission started after it was wired in, including the ones launched by phone |
 | Claims re-fetched through Context.dev | 3 of 16 | Mission `nvda-boat-2`: 3 of the 4 Fundamentals claims. The fourth matched only the raw page, and headline feeds are fetched directly |
-| Unit tests | 30 of 30 pass | `npm test` |
+| Unit tests | 47 of 47 pass | `npm test` |
 
 Recorded missions: [`examples/nvda-boat-2/`](examples/nvda-boat-2/) ran with a Boat VM and Context.dev, and [`examples/nvda-capex/`](examples/nvda-capex/) ran locally with a scout killed mid-run. Start with `memo.md` and `events.jsonl`. Raw planted-fakes output is in `scripts/planted-fakes.result.json`.
+
+## Test evidence
+
+Test output, the record of every mission, and the transcripts of the real phone calls are in [`evidence/`](evidence/README.md).
 
 ## Guards
 

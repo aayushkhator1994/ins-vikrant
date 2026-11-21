@@ -1,0 +1,11 @@
+Call started 2026-11-21T01:11:54.340Z ended 2026-11-21T01:12:31.320Z (customer-ended-call), caller ending 8254
+Transcript as produced by Vapi's speech-to-text; it mishears some words.
+
+AI: An espicrant. What should the crew research?
+User: Can you research NVIDIA's stock against the CapEx
+AI: You want to research in NVIDIA's stock in relation to its capital expenditures. Let me start this mission for you. Launching the crew.
+User: about the data center.
+AI: Launching the crew.
+AI: I couldn't start the mission due to a permission issue. Please try again later or check your access rights.
+User: Your permission to shoot
+
