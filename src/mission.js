@@ -131,6 +131,7 @@ export async function runMission({ id, ticker, company, question, focus = [], so
   ticker = String(ticker).toUpperCase();
   id = id || `${ticker.toLowerCase()}-${Date.now().toString(36)}`;
   company = company || ticker;
+  if (!sources.length) sources = (readJson(new URL('../watchlist.json', import.meta.url).pathname, {}) || {})[ticker] || [];
   question = question || `Do ${company}'s latest results support the story?`;
   const dir = path.join(missionsDir, id);
   fs.mkdirSync(dir, { recursive: true });

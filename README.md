@@ -4,6 +4,12 @@ Evidence-checked research missions. Ask a question about a company; three scouts
 
 Built for the Boat Hackathon (Nov 2026). Research only: no buy or sell language and no brokerage connection.
 
+## What the caller sees
+
+![Caller's view of a mission](docs/user-flow.png)
+
+You call the number and ask a question out loud. The voice agent restates it and starts a mission. A push with the verdict and claim counts lands on your phone, and you can call back to ask for the status or the reasons.
+
 ## What runs today
 
 | Part | File | What it does |
@@ -31,6 +37,19 @@ node src/mission.js --ticker NVDA --company NVIDIA \
 # the bridge and the timeline page at http://localhost:8787
 BRIDGE_SECRET=change-me npm run bridge
 ```
+
+### Phone entry point
+
+The phone number is a Vapi assistant whose four tools call the bridge.
+
+```sh
+cp .env.example .env            # fill in the values
+ngrok http 8787                 # put the https URL in .env as PUBLIC_URL
+node --env-file=.env src/bridge.js
+node --env-file=.env scripts/setup-vapi.js   # creates the assistant and attaches it to your number
+```
+
+If `watchlist.json` lists a ticker, the Fundamentals scout reads those pages; otherwise it looks up the latest filing on SEC EDGAR.
 
 Each mission writes `missions/<id>/`: `brief.json`, `steps/*.json`, `events.jsonl`, `findings.json`, `decision.json` and `memo.md`. The veto file is `veto/<TICKER>.json`.
 
@@ -64,7 +83,7 @@ A full recorded mission is in [`examples/nvda-capex/`](examples/nvda-capex/): st
 
 - **Boat VMs.** Scouts run as separate local processes, which stand in for per-mission VMs. Killing a process stands in for deleting a VM.
 - **Context.dev and Band.** Scouts and the checker fetch pages directly, and handoffs are function calls recorded in `events.jsonl`, not messages in a Band room.
-- **Live phone number.** The bridge's Vapi tool endpoint is tested with local requests only; no assistant or number is provisioned.
+- **Always-on bridge.** The phone number works while the bridge runs on a laptop behind an ngrok tunnel; it is not hosted on a Boat VM. The tool calls were verified through the public URL with simulated Vapi requests.
 - **Model-written arguments.** Scouts, Bull, Bear and the captain are deterministic code. Sides are assigned by keyword counting, which is crude, so there is no model comparison and no replay-accuracy score.
 - **Prompt-injection measurement.** Covered by a unit test of the checker only, not by planted pages fed to live scouts.
 - **Standing watch.** No monitors or webhooks.
